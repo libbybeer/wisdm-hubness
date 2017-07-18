@@ -55,6 +55,7 @@ dist10 = distances(alldata10)
 nn10 = nearest_neighbors(dist10)
 hubness10 = [hubness(i,nn10,3) for i in range(len(alldata10))]
 
+plt.interactive(True)
 
 plt.figure(0)
 plt.scatter(alldata10.T[0],alldata10.T[1],
