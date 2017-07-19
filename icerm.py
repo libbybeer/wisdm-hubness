@@ -99,28 +99,28 @@ plt.interactive(True)
 
 
 
-## load Priya's data
-#synthetic_data_30_50_overlap30 = scipy.io.loadmat("C://Users//Libby/Hubness/Datasets/synthetic_data_30_50_overlap30.mat")
-#class0 = np.array([x for (x,y) in zip(synthetic_data_30_50_overlap30["samples"],
-#                   synthetic_data_30_50_overlap30["ground"]) if y==0])
-#class1 = np.array([x for (x,y) in zip(synthetic_data_30_50_overlap30["samples"],
-#                   synthetic_data_30_50_overlap30["ground"]) if y==1])    
-#
-#[class0dist,class0nn,class0hubness] = dist_nn_hubness(class0,3)
-#[class1dist,class1nn,class1hubness] = dist_nn_hubness(class1,3)
-#[bothdist,bothnn,bothhubness] = dist_nn_hubness(synthetic_data_30_50_overlap30["samples"],3)
-#
+# load Priya's data
+synthetic_data_30_50_overlap30 = scipy.io.loadmat("C://Users//Libby/Hubness/Datasets/synthetic_data_30_50_overlap30.mat")
+overlap_class0 = np.array([x for (x,y) in zip(synthetic_data_30_50_overlap30["samples"],
+                   synthetic_data_30_50_overlap30["ground"]) if y==0])
+overlap_class1 = np.array([x for (x,y) in zip(synthetic_data_30_50_overlap30["samples"],
+                   synthetic_data_30_50_overlap30["ground"]) if y==1])    
 
-#samples_30_50 = scipy.io.loadmat("C://Users/Libby/Hubness/Datasets/samples_30_50.mat")
-#class0 = samples_30_50["samples"][:2500]
-#class1 = samples_30_50["samples"][2500:]
-#[class0dist,class0nn,class0hubness] = dist_nn_hubness(class0,30)
-#[class1dist,class1nn,class1hubness] = dist_nn_hubness(class1,30)
-#[bothdist,bothnn,bothhubness] = dist_nn_hubness(np.concatenate((class0,class1)),30)
-#plt.figure(4)
+overlap_class0_stats_k5 = dist_nn_hubness(overlap_class0,5)
+overlap_class1_stats_k5 = dist_nn_hubness(overlap_class1,5)
+overlap_global_stats_k5 = dist_nn_hubness(synthetic_data_30_50_overlap30["samples"],5)
+
+
+samples_30_50 = scipy.io.loadmat("C://Users/Libby/Hubness/Datasets/samples_30_50.mat")
+no_overlap_class0 = samples_30_50["samples"][:2500]
+no_overlap_class1 = samples_30_50["samples"][2500:]
+no_overlap_class0_stats_k5 = dist_nn_hubness(no_overlap_class0,30)
+no_overlap_class1_stats_k5 = dist_nn_hubness(no_overlap_class1,30)
+no_overlap_global_stats_k5 = dist_nn_hubness(np.concatenate((no_overlap_class0,no_overlap_class1)),30)
+plt.figure(4)
 #plt.plot(class0hubness == bothhubness[:2500])
 #plt.plot(class1hubness == bothhubness[2500:])
-#
+
 #
 #
 #plt.figure(5)
@@ -130,33 +130,77 @@ plt.interactive(True)
 #plt.figure(6)
 #plot_by_hubness(synthetic_data_30_50_overlap30["samples"].T[40:42].T,bothhubness)
 
-def random_spherical_separated_clusters(N,d,n):
+def random_spherical_separated_clusters(Ns,d,n,sep=10,dims_of_sep=1):
     #N = 1000 # number of data points
     #d = 10 # number of dimensions
     #n = 2 # number of clusters
     
-    alldata = np.zeros((N*n,d))
+    alldata = np.zeros((sum(Ns),d))
+    running_N = 0
+    dim_sep = np.sqrt(sep*sep/dims_of_sep)
     
     for i in range(n):
-        cmean = 10*i*np.ones(d)
+        N = Ns[i]
+        cmean = np.array([dim_sep*i]*dims_of_sep + [0]*(d-dims_of_sep))
+        #cmean = dim_sep*i*np.ones(d)
         allc = np.array([np.random.normal(cmean) for j in range(N)])
-        alldata[(i*N):((i+1)*N)] = allc
+        alldata[running_N:(running_N+N)] = allc
+        running_N += N
         
     return alldata
 
-N = 500
-d = 2
-n = 10
+np.random.seed(2017)
+gaussians_1000_2000_30 = random_spherical_separated_clusters([1000,2000],30,2,10,1)
+gaussians_1000_3000_30 = random_spherical_separated_clusters([1000,3000],30,2,10,1)
+gaussians_1000_4000_30 = random_spherical_separated_clusters([1000,4000],30,2,10,1)
+gaussians_1000_5000_30 = random_spherical_separated_clusters([1000,5000],30,2,10,1)
+gaussians_1000_2000_60 = random_spherical_separated_clusters([1000,2000],60,2,10,1)
+gaussians_1000_3000_60 = random_spherical_separated_clusters([1000,3000],60,2,10,1)
+gaussians_1000_4000_60 = random_spherical_separated_clusters([1000,4000],60,2,10,1)
+gaussians_1000_5000_60 = random_spherical_separated_clusters([1000,5000],60,2,10,1)
+gaussians_1000_2000_100 = random_spherical_separated_clusters([1000,2000],100,2,10,1)
+gaussians_1000_3000_100 = random_spherical_separated_clusters([1000,3000],100,2,10,1)
+gaussians_1000_4000_100 = random_spherical_separated_clusters([1000,4000],100,2,10,1)
+gaussians_1000_5000_100 = random_spherical_separated_clusters([1000,5000],100,2,10,1)
+scipy.io.savemat("gaussians_1000_2000_30.mat",{"class0":gaussians_1000_2000_30[:1000],"class1":gaussians_1000_2000_30[1000:]})
+scipy.io.savemat("gaussians_1000_3000_30.mat",{"class0":gaussians_1000_3000_30[:1000],"class1":gaussians_1000_3000_30[1000:]})
+scipy.io.savemat("gaussians_1000_4000_30.mat",{"class0":gaussians_1000_4000_30[:1000],"class1":gaussians_1000_4000_30[1000:]})
+scipy.io.savemat("gaussians_1000_5000_30.mat",{"class0":gaussians_1000_5000_30[:1000],"class1":gaussians_1000_5000_30[1000:]})
+scipy.io.savemat("gaussians_1000_2000_60.mat",{"class0":gaussians_1000_2000_60[:1000],"class1":gaussians_1000_2000_60[1000:]})
+scipy.io.savemat("gaussians_1000_3000_60.mat",{"class0":gaussians_1000_3000_60[:1000],"class1":gaussians_1000_3000_60[1000:]})
+scipy.io.savemat("gaussians_1000_4000_60.mat",{"class0":gaussians_1000_4000_60[:1000],"class1":gaussians_1000_4000_60[1000:]})
+scipy.io.savemat("gaussians_1000_5000_60.mat",{"class0":gaussians_1000_5000_60[:1000],"class1":gaussians_1000_5000_60[1000:]})
+scipy.io.savemat("gaussians_1000_2000_100.mat",{"class0":gaussians_1000_2000_100[:1000],"class1":gaussians_1000_2000_100[1000:]})
+scipy.io.savemat("gaussians_1000_3000_100.mat",{"class0":gaussians_1000_3000_100[:1000],"class1":gaussians_1000_3000_100[1000:]})
+scipy.io.savemat("gaussians_1000_4000_100.mat",{"class0":gaussians_1000_4000_100[:1000],"class1":gaussians_1000_4000_100[1000:]})
+scipy.io.savemat("gaussians_1000_5000_100.mat",{"class0":gaussians_1000_5000_100[:1000],"class1":gaussians_1000_5000_100[1000:]})
 
-clust10 = random_spherical_separated_clusters(N,d,n)
+
+
+start=time.time()
+N = 100
+d = 40
+n = 10
+sep = 3
+k = 5
+
+clust10 = random_spherical_separated_clusters(N,d,n,sep)
 local_stats_clust10 = [[]]*n
 for i in range(10):
     locdata = clust10[(i*N):((i+1)*N)]
-    local_stats_clust10[i] = dist_nn_hubness(locdata,6)
+    local_stats_clust10[i] = dist_nn_hubness(locdata,k)
 
-global_stats_clust10 = dist_nn_hubness(clust10,6)
+global_stats_clust10 = dist_nn_hubness(clust10,k)
+global_hubnesses = global_stats_clust10[2]
+local_hubnesses = np.concatenate([np.array(local_stats_clust10[i][2]) for i in range(10)])
 
+def above_n_sigmas(x,n):
+    m = np.mean(x)
+    s = np.std(x)
+    return [i for i in range(len(x)) if x[i] > m+n*s]
 
+opt = scipy.io.loadmat("C:/Users/Libby/Hubness/Datasets/data_opt.mat")
+start = time.time(); opt_global_stats = dist_nn_hubness(opt["data_sample"],5); end = time.time(); print(end-start)
 
 end = time.time()
 print(start)
