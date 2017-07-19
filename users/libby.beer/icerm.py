@@ -12,8 +12,8 @@ Created on Mon Jul 17 16:14:38 2017
 #import matplotlib.pyplot as plt
 #import scipy.io
 
-#exec(open("icerm_functions.py").read())
-execfile("icerm_functions.py")
+exec(open("icerm_functions.py").read()) # python 3 (on laptop)
+#execfile("icerm_functions.py") # python 2 (on oscar)
 start = time.time()
 np.random.seed(2017) # set seed for reproducible results
 
@@ -206,6 +206,7 @@ np.random.seed(2017) # set seed for reproducible results
 #start = time.time(); opt_global_stats = dist_nn_hubness(opt["data_sample"],5); end = time.time(); print(end-start)
 #
 
+#g_1_2_30 = scipy.io.loadmat("C:/Users/Libby/Documents/GitHub/wisdm-hubness/shared_data/gaussians_1000_2000_30.mat")
 g_1_2_30 = scipy.io.loadmat("../../shared_data/gaussians_1000_2000_30.mat")
 g_1_3_30 = scipy.io.loadmat("../../shared_data/gaussians_1000_3000_30.mat")
 g_1_4_30 = scipy.io.loadmat("../../shared_data/gaussians_1000_4000_30.mat")
@@ -232,78 +233,78 @@ u_1_4_100 = scipy.io.loadmat("../../shared_data/uniform-dim100-1k-4k.mat")
 u_1_5_100 = scipy.io.loadmat("../../shared_data/uniform-dim100-1k-5k.mat")
 
 global_stats_dict = {}
-global_stats_dict["g_1_2_30_globalstats_k5"] = dist_nn_hubness(g_1_2_30["allsamples"],5)
-#global_stats_dict["g_1_3_30_globalstats_k5"] = dist_nn_hubness(g_1_3_30["allsamples"],5)
-#global_stats_dict["g_1_4_30_globalstats_k5"] = dist_nn_hubness(g_1_4_30["allsamples"],5)
-#global_stats_dict["g_1_5_30_globalstats_k5"] = dist_nn_hubness(g_1_5_30["allsamples"],5)
-#global_stats_dict["g_1_2_60_globalstats_k5"] = dist_nn_hubness(g_1_2_60["allsamples"],5)
-#global_stats_dict["g_1_3_60_globalstats_k5"] = dist_nn_hubness(g_1_3_60["allsamples"],5)
-#global_stats_dict["g_1_4_60_globalstats_k5"] = dist_nn_hubness(g_1_4_60["allsamples"],5)
-#global_stats_dict["g_1_5_60_globalstats_k5"] = dist_nn_hubness(g_1_5_60["allsamples"],5)
-#global_stats_dict["g_1_2_100_globalstats_k5"] = dist_nn_hubness(g_1_2_100["allsamples"],5)
-#global_stats_dict["g_1_3_100_globalstats_k5"] = dist_nn_hubness(g_1_3_100["allsamples"],5)
-#global_stats_dict["g_1_4_100_globalstats_k5"] = dist_nn_hubness(g_1_4_100["allsamples"],5)
-#global_stats_dict["g_1_5_100_globalstats_k5"] = dist_nn_hubness(g_1_5_100["allsamples"],5)
-#global_stats_dict["g_1_2_30_globalstats_k10"] = dist_nn_hubness(g_1_2_30["allsamples"],10)
-#global_stats_dict["g_1_3_30_globalstats_k10"] = dist_nn_hubness(g_1_3_30["allsamples"],10)
-#global_stats_dict["g_1_4_30_globalstats_k10"] = dist_nn_hubness(g_1_4_30["allsamples"],10)
-#global_stats_dict["g_1_5_30_globalstats_k10"] = dist_nn_hubness(g_1_5_30["allsamples"],10)
-#global_stats_dict["g_1_2_60_globalstats_k10"] = dist_nn_hubness(g_1_2_60["allsamples"],10)
-#global_stats_dict["g_1_3_60_globalstats_k10"] = dist_nn_hubness(g_1_3_60["allsamples"],10)
-#global_stats_dict["g_1_4_60_globalstats_k10"] = dist_nn_hubness(g_1_4_60["allsamples"],10)
-#global_stats_dict["g_1_5_60_globalstats_k10"] = dist_nn_hubness(g_1_5_60["allsamples"],10)
-#global_stats_dict["g_1_2_100_globalstats_k10"] = dist_nn_hubness(g_1_2_100["allsamples"],10)
-#global_stats_dict["g_1_3_100_globalstats_k10"] = dist_nn_hubness(g_1_3_100["allsamples"],10)
-#global_stats_dict["g_1_4_100_globalstats_k10"] = dist_nn_hubness(g_1_4_100["allsamples"],10)
-#global_stats_dict["g_1_5_100_globalstats_k10"] = dist_nn_hubness(g_1_5_100["allsamples"],10)
-#global_stats_dict["g_1_2_30_globalstats_k50"] = dist_nn_hubness(g_1_2_30["allsamples"],50)
-#global_stats_dict["g_1_3_30_globalstats_k50"] = dist_nn_hubness(g_1_3_30["allsamples"],50)
-#global_stats_dict["g_1_4_30_globalstats_k50"] = dist_nn_hubness(g_1_4_30["allsamples"],50)
-#global_stats_dict["g_1_5_30_globalstats_k50"] = dist_nn_hubness(g_1_5_30["allsamples"],50)
-#global_stats_dict["g_1_2_60_globalstats_k50"] = dist_nn_hubness(g_1_2_60["allsamples"],50)
-#global_stats_dict["g_1_3_60_globalstats_k50"] = dist_nn_hubness(g_1_3_60["allsamples"],50)
-#global_stats_dict["g_1_4_60_globalstats_k50"] = dist_nn_hubness(g_1_4_60["allsamples"],50)
-#global_stats_dict["g_1_5_60_globalstats_k50"] = dist_nn_hubness(g_1_5_60["allsamples"],50)
-#global_stats_dict["g_1_2_100_globalstats_k50"] = dist_nn_hubness(g_1_2_100["allsamples"],50)
-#global_stats_dict["g_1_3_100_globalstats_k50"] = dist_nn_hubness(g_1_3_100["allsamples"],50)
-#global_stats_dict["g_1_4_100_globalstats_k50"] = dist_nn_hubness(g_1_4_100["allsamples"],50)
-#global_stats_dict["g_1_5_100_globalstats_k50"] = dist_nn_hubness(g_1_5_100["allsamples"],50)
-#global_stats_dict["u_1_2_30_globalstats_k5"] = dist_nn_hubness(u_1_2_30["allsamples"],5)
-#global_stats_dict["u_1_3_30_globalstats_k5"] = dist_nn_hubness(u_1_3_30["allsamples"],5)
-#global_stats_dict["u_1_4_30_globalstats_k5"] = dist_nn_hubness(u_1_4_30["allsamples"],5)
-#global_stats_dict["u_1_5_30_globalstats_k5"] = dist_nn_hubness(u_1_5_30["allsamples"],5)
-#global_stats_dict["u_1_2_60_globalstats_k5"] = dist_nn_hubness(u_1_2_60["allsamples"],5)
-#global_stats_dict["u_1_3_60_globalstats_k5"] = dist_nn_hubness(u_1_3_60["allsamples"],5)
-#global_stats_dict["u_1_4_60_globalstats_k5"] = dist_nn_hubness(u_1_4_60["allsamples"],5)
-#global_stats_dict["u_1_5_60_globalstats_k5"] = dist_nn_hubness(u_1_5_60["allsamples"],5)
-#global_stats_dict["u_1_2_100_globalstats_k5"] = dist_nn_hubness(u_1_2_100["allsamples"],5)
-#global_stats_dict["u_1_3_100_globalstats_k5"] = dist_nn_hubness(u_1_3_100["allsamples"],5)
-#global_stats_dict["u_1_4_100_globalstats_k5"] = dist_nn_hubness(u_1_4_100["allsamples"],5)
-#global_stats_dict["u_1_5_100_globalstats_k5"] = dist_nn_hubness(u_1_5_100["allsamples"],5)
-#global_stats_dict["u_1_2_30_globalstats_k10"] = dist_nn_hubness(u_1_2_30["allsamples"],10)
-#global_stats_dict["u_1_3_30_globalstats_k10"] = dist_nn_hubness(u_1_3_30["allsamples"],10)
-#global_stats_dict["u_1_4_30_globalstats_k10"] = dist_nn_hubness(u_1_4_30["allsamples"],10)
-#global_stats_dict["u_1_5_30_globalstats_k10"] = dist_nn_hubness(u_1_5_30["allsamples"],10)
-#global_stats_dict["u_1_2_60_globalstats_k10"] = dist_nn_hubness(u_1_2_60["allsamples"],10)
-#global_stats_dict["u_1_3_60_globalstats_k10"] = dist_nn_hubness(u_1_3_60["allsamples"],10)
-#global_stats_dict["u_1_4_60_globalstats_k10"] = dist_nn_hubness(u_1_4_60["allsamples"],10)
-#global_stats_dict["u_1_5_60_globalstats_k10"] = dist_nn_hubness(u_1_5_60["allsamples"],10)
-#global_stats_dict["u_1_2_100_globalstats_k10"] = dist_nn_hubness(u_1_2_100["allsamples"],10)
-#global_stats_dict["u_1_3_100_globalstats_k10"] = dist_nn_hubness(u_1_3_100["allsamples"],10)
-#global_stats_dict["u_1_4_100_globalstats_k10"] = dist_nn_hubness(u_1_4_100["allsamples"],10)
-#global_stats_dict["u_1_5_100_globalstats_k10"] = dist_nn_hubness(u_1_5_100["allsamples"],10)
-#global_stats_dict["u_1_2_30_globalstats_k50"] = dist_nn_hubness(u_1_2_30["allsamples"],50)
-#global_stats_dict["u_1_3_30_globalstats_k50"] = dist_nn_hubness(u_1_3_30["allsamples"],50)
-#global_stats_dict["u_1_4_30_globalstats_k50"] = dist_nn_hubness(u_1_4_30["allsamples"],50)
-#global_stats_dict["u_1_5_30_globalstats_k50"] = dist_nn_hubness(u_1_5_30["allsamples"],50)
-#global_stats_dict["u_1_2_60_globalstats_k50"] = dist_nn_hubness(u_1_2_60["allsamples"],50)
-#global_stats_dict["u_1_3_60_globalstats_k50"] = dist_nn_hubness(u_1_3_60["allsamples"],50)
-#global_stats_dict["u_1_4_60_globalstats_k50"] = dist_nn_hubness(u_1_4_60["allsamples"],50)
-#global_stats_dict["u_1_5_60_globalstats_k50"] = dist_nn_hubness(u_1_5_60["allsamples"],50)
-#global_stats_dict["u_1_2_100_globalstats_k50"] = dist_nn_hubness(u_1_2_100["allsamples"],50)
-#global_stats_dict["u_1_3_100_globalstats_k50"] = dist_nn_hubness(u_1_3_100["allsamples"],50)
-#global_stats_dict["u_1_4_100_globalstats_k50"] = dist_nn_hubness(u_1_4_100["allsamples"],50)
-#global_stats_dict["u_1_5_100_globalstats_k50"] = dist_nn_hubness(u_1_5_100["allsamples"],50)
+global_stats_dict["g_1_2_30_globalhubness_k5"] = dist_nn_hubness(g_1_2_30["allsamples"],5)[2]
+global_stats_dict["g_1_3_30_globalhubness_k5"] = dist_nn_hubness(g_1_3_30["allsamples"],5)[2]
+global_stats_dict["g_1_4_30_globalhubness_k5"] = dist_nn_hubness(g_1_4_30["allsamples"],5)[2]
+global_stats_dict["g_1_5_30_globalhubness_k5"] = dist_nn_hubness(g_1_5_30["allsamples"],5)[2]
+global_stats_dict["g_1_2_60_globalhubness_k5"] = dist_nn_hubness(g_1_2_60["allsamples"],5)[2]
+global_stats_dict["g_1_3_60_globalhubness_k5"] = dist_nn_hubness(g_1_3_60["allsamples"],5)[2]
+global_stats_dict["g_1_4_60_globalhubness_k5"] = dist_nn_hubness(g_1_4_60["allsamples"],5)[2]
+global_stats_dict["g_1_5_60_globalhubness_k5"] = dist_nn_hubness(g_1_5_60["allsamples"],5)[2]
+global_stats_dict["g_1_2_100_globalhubness_k5"] = dist_nn_hubness(g_1_2_100["allsamples"],5)[2]
+global_stats_dict["g_1_3_100_globalhubness_k5"] = dist_nn_hubness(g_1_3_100["allsamples"],5)[2]
+global_stats_dict["g_1_4_100_globalhubness_k5"] = dist_nn_hubness(g_1_4_100["allsamples"],5)[2]
+global_stats_dict["g_1_5_100_globalhubness_k5"] = dist_nn_hubness(g_1_5_100["allsamples"],5)[2]
+global_stats_dict["g_1_2_30_globalhubness_k10"] = dist_nn_hubness(g_1_2_30["allsamples"],10)[2]
+global_stats_dict["g_1_3_30_globalhubness_k10"] = dist_nn_hubness(g_1_3_30["allsamples"],10)[2]
+global_stats_dict["g_1_4_30_globalhubness_k10"] = dist_nn_hubness(g_1_4_30["allsamples"],10)[2]
+global_stats_dict["g_1_5_30_globalhubness_k10"] = dist_nn_hubness(g_1_5_30["allsamples"],10)[2]
+global_stats_dict["g_1_2_60_globalhubness_k10"] = dist_nn_hubness(g_1_2_60["allsamples"],10)[2]
+global_stats_dict["g_1_3_60_globalhubness_k10"] = dist_nn_hubness(g_1_3_60["allsamples"],10)[2]
+global_stats_dict["g_1_4_60_globalhubness_k10"] = dist_nn_hubness(g_1_4_60["allsamples"],10)[2]
+global_stats_dict["g_1_5_60_globalhubness_k10"] = dist_nn_hubness(g_1_5_60["allsamples"],10)[2]
+global_stats_dict["g_1_2_100_globalhubness_k10"] = dist_nn_hubness(g_1_2_100["allsamples"],10)[2]
+global_stats_dict["g_1_3_100_globalhubness_k10"] = dist_nn_hubness(g_1_3_100["allsamples"],10)[2]
+global_stats_dict["g_1_4_100_globalhubness_k10"] = dist_nn_hubness(g_1_4_100["allsamples"],10)[2]
+global_stats_dict["g_1_5_100_globalhubness_k10"] = dist_nn_hubness(g_1_5_100["allsamples"],10)[2]
+global_stats_dict["g_1_2_30_globalhubness_k50"] = dist_nn_hubness(g_1_2_30["allsamples"],50)[2]
+global_stats_dict["g_1_3_30_globalhubness_k50"] = dist_nn_hubness(g_1_3_30["allsamples"],50)[2]
+global_stats_dict["g_1_4_30_globalhubness_k50"] = dist_nn_hubness(g_1_4_30["allsamples"],50)[2]
+global_stats_dict["g_1_5_30_globalhubness_k50"] = dist_nn_hubness(g_1_5_30["allsamples"],50)[2]
+global_stats_dict["g_1_2_60_globalhubness_k50"] = dist_nn_hubness(g_1_2_60["allsamples"],50)[2]
+global_stats_dict["g_1_3_60_globalhubness_k50"] = dist_nn_hubness(g_1_3_60["allsamples"],50)[2]
+global_stats_dict["g_1_4_60_globalhubness_k50"] = dist_nn_hubness(g_1_4_60["allsamples"],50)[2]
+global_stats_dict["g_1_5_60_globalhubness_k50"] = dist_nn_hubness(g_1_5_60["allsamples"],50)[2]
+global_stats_dict["g_1_2_100_globalhubness_k50"] = dist_nn_hubness(g_1_2_100["allsamples"],50)[2]
+global_stats_dict["g_1_3_100_globalhubness_k50"] = dist_nn_hubness(g_1_3_100["allsamples"],50)[2]
+global_stats_dict["g_1_4_100_globalhubness_k50"] = dist_nn_hubness(g_1_4_100["allsamples"],50)[2]
+global_stats_dict["g_1_5_100_globalhubness_k50"] = dist_nn_hubness(g_1_5_100["allsamples"],50)[2]
+global_stats_dict["u_1_2_30_globalhubness_k5"] = dist_nn_hubness(u_1_2_30["allsamples"],5)[2]
+global_stats_dict["u_1_3_30_globalhubness_k5"] = dist_nn_hubness(u_1_3_30["allsamples"],5)[2]
+global_stats_dict["u_1_4_30_globalhubness_k5"] = dist_nn_hubness(u_1_4_30["allsamples"],5)[2]
+global_stats_dict["u_1_5_30_globalhubness_k5"] = dist_nn_hubness(u_1_5_30["allsamples"],5)[2]
+global_stats_dict["u_1_2_60_globalhubness_k5"] = dist_nn_hubness(u_1_2_60["allsamples"],5)[2]
+global_stats_dict["u_1_3_60_globalhubness_k5"] = dist_nn_hubness(u_1_3_60["allsamples"],5)[2]
+global_stats_dict["u_1_4_60_globalhubness_k5"] = dist_nn_hubness(u_1_4_60["allsamples"],5)[2]
+global_stats_dict["u_1_5_60_globalhubness_k5"] = dist_nn_hubness(u_1_5_60["allsamples"],5)[2]
+global_stats_dict["u_1_2_100_globalhubness_k5"] = dist_nn_hubness(u_1_2_100["allsamples"],5)[2]
+global_stats_dict["u_1_3_100_globalhubness_k5"] = dist_nn_hubness(u_1_3_100["allsamples"],5)[2]
+global_stats_dict["u_1_4_100_globalhubness_k5"] = dist_nn_hubness(u_1_4_100["allsamples"],5)[2]
+global_stats_dict["u_1_5_100_globalhubness_k5"] = dist_nn_hubness(u_1_5_100["allsamples"],5)[2]
+global_stats_dict["u_1_2_30_globalhubness_k10"] = dist_nn_hubness(u_1_2_30["allsamples"],10)[2]
+global_stats_dict["u_1_3_30_globalhubness_k10"] = dist_nn_hubness(u_1_3_30["allsamples"],10)[2]
+global_stats_dict["u_1_4_30_globalhubness_k10"] = dist_nn_hubness(u_1_4_30["allsamples"],10)[2]
+global_stats_dict["u_1_5_30_globalhubness_k10"] = dist_nn_hubness(u_1_5_30["allsamples"],10)[2]
+global_stats_dict["u_1_2_60_globalhubness_k10"] = dist_nn_hubness(u_1_2_60["allsamples"],10)[2]
+global_stats_dict["u_1_3_60_globalhubness_k10"] = dist_nn_hubness(u_1_3_60["allsamples"],10)[2]
+global_stats_dict["u_1_4_60_globalhubness_k10"] = dist_nn_hubness(u_1_4_60["allsamples"],10)[2]
+global_stats_dict["u_1_5_60_globalhubness_k10"] = dist_nn_hubness(u_1_5_60["allsamples"],10)[2]
+global_stats_dict["u_1_2_100_globalhubness_k10"] = dist_nn_hubness(u_1_2_100["allsamples"],10)[2]
+global_stats_dict["u_1_3_100_globalhubness_k10"] = dist_nn_hubness(u_1_3_100["allsamples"],10)[2]
+global_stats_dict["u_1_4_100_globalhubness_k10"] = dist_nn_hubness(u_1_4_100["allsamples"],10)[2]
+global_stats_dict["u_1_5_100_globalhubness_k10"] = dist_nn_hubness(u_1_5_100["allsamples"],10)[2]
+global_stats_dict["u_1_2_30_globalhubness_k50"] = dist_nn_hubness(u_1_2_30["allsamples"],50)[2]
+global_stats_dict["u_1_3_30_globalhubness_k50"] = dist_nn_hubness(u_1_3_30["allsamples"],50)[2]
+global_stats_dict["u_1_4_30_globalhubness_k50"] = dist_nn_hubness(u_1_4_30["allsamples"],50)[2]
+global_stats_dict["u_1_5_30_globalhubness_k50"] = dist_nn_hubness(u_1_5_30["allsamples"],50)[2]
+global_stats_dict["u_1_2_60_globalhubness_k50"] = dist_nn_hubness(u_1_2_60["allsamples"],50)[2]
+global_stats_dict["u_1_3_60_globalhubness_k50"] = dist_nn_hubness(u_1_3_60["allsamples"],50)[2]
+global_stats_dict["u_1_4_60_globalhubness_k50"] = dist_nn_hubness(u_1_4_60["allsamples"],50)[2]
+global_stats_dict["u_1_5_60_globalhubness_k50"] = dist_nn_hubness(u_1_5_60["allsamples"],50)[2]
+global_stats_dict["u_1_2_100_globalhubness_k50"] = dist_nn_hubness(u_1_2_100["allsamples"],50)[2]
+global_stats_dict["u_1_3_100_globalhubness_k50"] = dist_nn_hubness(u_1_3_100["allsamples"],50)[2]
+global_stats_dict["u_1_4_100_globalhubness_k50"] = dist_nn_hubness(u_1_4_100["allsamples"],50)[2]
+global_stats_dict["u_1_5_100_globalhubness_k50"] = dist_nn_hubness(u_1_5_100["allsamples"],50)[2]
 
 scipy.io.savemat("global_stats.mat",global_stats_dict)
 
