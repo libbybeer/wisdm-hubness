@@ -26,7 +26,7 @@ def dist_nn_hubness(allx,k):
     d = distances(allx)
     nn = nearest_neighbors(d)
     h = np.array([hubness(i,nn,k) for i in range(len(allx))])
-    return [d,nn,h]
+    return np.array([d,nn,h])
     
 def plot_by_hubness(pts, h):
     horder = list(h.argsort())
