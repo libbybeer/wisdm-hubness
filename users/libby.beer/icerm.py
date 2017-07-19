@@ -12,7 +12,8 @@ Created on Mon Jul 17 16:14:38 2017
 #import matplotlib.pyplot as plt
 #import scipy.io
 
-exec(open("icerm_functions.py").read())
+#exec(open("icerm_functions.py").read())
+execfile("icerm_functions.py")
 start = time.time()
 np.random.seed(2017) # set seed for reproducible results
 
