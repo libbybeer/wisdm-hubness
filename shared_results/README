@@ -12,3 +12,15 @@ gauss-hubness* -
 	"xdens_yhubs" contains the average density per cluster in the first column and the 		fraction of hubs in each cluster to the total number of hubs in the second 		column
 unif-density* - same as gauss-density but for uniform hypercubes
 unif-hubness* - same as gauss-hubness but for uniform hypercubes
+
+Created by Libby:
+gaussian_global_hubnesses.mat - 
+	for example, "g_1_5_30_globalhubness_k5" contains the global 
+	hubness score for each point in the synthetic two-gaussians
+	data with 1000 points in the first cluster, 5000 points in the
+	second, in 30 dimensions, with hubness calculated using k=5.
+uniform_global_hubnesses.mat -  
+	for example, "u_1_5_30_globalhubness_k5" contains the global 
+	hubness score for each point in the synthetic two-uniforms
+	data with 1000 points in the first cluster, 5000 points in the
+	second, in 30 dimensions, with hubness calculated using k=5.
