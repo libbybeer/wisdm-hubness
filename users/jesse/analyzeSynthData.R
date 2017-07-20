@@ -10,7 +10,7 @@ dir='/users/guest427/wisdm-hubness/shared_data/'
 filelist = list.files(dir)[-1] # skip the first file, which is a .py script
 
 gaussfiles = filelist[grepl('gauss', filelist)]
-uniformfiles = filelist[grepl('uniform', filelist)]
+uniformfiles = filelist[grepl('unif', filelist)]
 
 # For each file, generate the ranked distance matrix and save it.
 outputdir = '/users/guest427/wisdm-hubness/users//jesse/rankeddistances/'
