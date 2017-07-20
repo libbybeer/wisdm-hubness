@@ -172,7 +172,7 @@ def illustrate_gaussian_data(ratio,d,k):
     print(samples.shape)
     print(samples[0].shape)
     fig = plt.figure()
-    fig.suptitle("Two Gaussians in "+str(d)+" dimensions, density ratio 1:"+str(ratio))
+    fig.suptitle("Two spherical Gaussians in "+str(d)+" dimensions, density ratio 1:"+str(ratio))
     ax = fig.add_subplot(111,projection='3d')
     ax.set_xlabel("separating dimension")
     ax.scatter(samples.T[0],samples.T[1],samples.T[2])
