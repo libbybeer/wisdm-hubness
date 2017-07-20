@@ -1,0 +1,14 @@
+
+Created by Marilyn:
+gauss-density* - 
+	"dens_ave" contains the average density for each of the two gaussians
+	"q" contains the local density at each point
+	by "density" we mean the distance to the 15th nearest neighbor
+		(which is k-16 in Marilyn's code, k=15 in Libby's and Jesses')
+gauss-hubness* - 
+	"N_k" contains the hubness score (k-occurrences, filename gives k)
+	"hubs" contains a 0 or 1 for each point, 1 if this point is a 
+		2-sigma hub
+	"xdens_yhubs" contains ?
+unif-density* - same as gauss-density but for uniform hypercubes
+unif-hubness* - same as gauss-hubness but for uniform hypercubes
