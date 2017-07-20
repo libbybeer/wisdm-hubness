@@ -1,0 +1,20 @@
+Jesse Metcalf-Burton (datasciencejess@gmail.com)
+
+Work from WiSDM at ICERM, July 2017
+
+* analyzeSynthData.R
+Script to analyze synthetic data created by Libby & Marilyn.
+Creates contents of rankeddistances and graphs directories.
+
+
+* rankeddistances
+matrix of distances between all points, converted into ranks
+so that I can more easily compute hubness for any value of k later.
+
+* graphs: 
+folder containing, for each synthetic data set made by
+Libby and Marilyn, histograms of distances between
+- all points
+- all hubs
+- all intrA-cluster hubs
+- all intER-cluster hubs

@@ -1,0 +1,3 @@
+*~ # don't save any intermediate emacs files
+rankeddistances/ # these are far too big
+.Rhistory
