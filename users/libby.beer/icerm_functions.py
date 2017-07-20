@@ -123,6 +123,33 @@ def plot_hubness_vs_density(ratio,d,k,datatype="gaussian",
  
 from mpl_toolkits.mplot3d import Axes3D
 
+def load_samples(ratio,d,k,datatype="gaussian",data_fileprefix="../../shared_data"):
+    if datatype == "uniform":
+        data_filename = "unif-dim"+str(d)+"-1000-"+str(ratio)+"000.mat"
+        data_index="X"
+    elif datatype == "gaussian":
+        data_filename = "gaussians_1000_"+str(ratio)+"000_"+str(d)+".mat"
+        data_index="allsamples"
+    else:
+        print("You specified "+datatype+", which isn't a datatype I recognize.")
+        return None       
+    samples = scipy.io.loadmat(data_fileprefix+data_filename)[data_index]
+    return samples
+
+def load_hubnesses(ratio,d,k,datatype="gaussian",
+                            data_fileprefix="../../shared_results/"):
+    if datatype=="gaussian":
+        hubness_filename = "gaussian_global_hubnesses.mat"
+        hubness_index = "g_1_"+str(ratio)+"_"+str(d)+"_globalhubness_k"+str(k)
+    elif datatype=="uniform":
+        hubness_filename = "uniform_global_hubnesses.mat"
+        hubness_index = "u_1_"+str(ratio)+"_"+str(d)+"_globalhubness_k"+str(k)
+    else:
+        print("You specified "+datatype+", which isn't a datatype I recognize.")
+        return None    
+    hubness_scores = scipy.io.loadmat(data_fileprefix+hubness_filename)[hubness_index].T
+    return hubness_scores
+
     
 def illustrate_uniform_data(ratio,d,k):
     data_fileprefix="../../shared_data/"
@@ -136,3 +163,24 @@ def illustrate_uniform_data(ratio,d,k):
     ax.scatter(samples.T[0],samples.T[1],samples.T[2])
     plt.show()
         
+def illustrate_gaussian_data(ratio,d,k):
+    data_fileprefix="../../shared_data/"
+    data_filename = "gaussians_1000_"+str(ratio)+"000_"+str(d)+".mat"
+    #data_filename = "unif-dim"+str(d)+"-1000-"+str(ratio)+"000.mat"
+    print(data_fileprefix+data_filename)
+    samples = scipy.io.loadmat(data_fileprefix+data_filename)["X"]
+    print(samples.shape)
+    print(samples[0].shape)
+    fig = plt.figure()
+    ax = fig.add_subplot(111,projection='3d')
+    ax.scatter(samples.T[0],samples.T[1],samples.T[2])
+    plt.show()
+
+def hubs_per_cluster(ratio,d,k,datatype="gaussian",data_fileprefix="../../shared_data/",
+                     results_fileprefix="../../shared_results/"):
+    samples = load_samples(ratio,d,k,datatype,data_fileprefix)
+    hubnesses = load_hubnesses(ratio,d,k,datatype,results_fileprefix)
+    hubs = above_n_sigmas(hubnesses,2)
+    hubs0 = len([y for y in hubs if y<1000])
+    hubs1 = len([y for y in hubs if y>=1000])
+    return np.array([hubs0,hubs1])
