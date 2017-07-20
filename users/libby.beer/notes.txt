@@ -58,3 +58,8 @@ Thu Jul 20 11:09:04 2017 u 1,5,100,k10
 Thu Jul 20 11:10:42 2017 u 1,2,30,k50
 
 
+compute_global_hubnesses(2,30,5,"uniform")
+Thu Jul 20 10:33:12 2017 - about to compute global hubnesses for ratio 2, d=30, k=5, datatype=uniform
+
+Thu Jul 20 10:39:38 2017 - computed global hubnesses for ratio 2, d=30, k=5, datatype=uniform
+
