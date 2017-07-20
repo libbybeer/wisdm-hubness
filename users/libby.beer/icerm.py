@@ -12,8 +12,8 @@ Created on Mon Jul 17 16:14:38 2017
 #import matplotlib.pyplot as plt
 #import scipy.io
 
-exec(open("icerm_functions.py").read()) # python 3 (on laptop)
-#execfile("icerm_functions.py") # python 2 (on oscar)
+#exec(open("icerm_functions.py").read()) # python 3 (on laptop)
+execfile("icerm_functions.py") # python 2 (on oscar)
 start = time.time()
 np.random.seed(2017) # set seed for reproducible results
 
@@ -305,81 +305,81 @@ global_stats_dict["g_1_4_100_globalhubness_k50"] = dist_nn_hubness(g_1_4_100["al
 scipy.io.savemat("global_stats.mat",global_stats_dict)
 global_stats_dict["g_1_5_100_globalhubness_k50"] = dist_nn_hubness(g_1_5_100["allsamples"],50)[2]
 scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_2_30_globalhubness_k5"] = dist_nn_hubness(u_1_2_30["allsamples"],5)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_3_30_globalhubness_k5"] = dist_nn_hubness(u_1_3_30["allsamples"],5)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_4_30_globalhubness_k5"] = dist_nn_hubness(u_1_4_30["allsamples"],5)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_5_30_globalhubness_k5"] = dist_nn_hubness(u_1_5_30["allsamples"],5)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_2_60_globalhubness_k5"] = dist_nn_hubness(u_1_2_60["allsamples"],5)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_3_60_globalhubness_k5"] = dist_nn_hubness(u_1_3_60["allsamples"],5)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_4_60_globalhubness_k5"] = dist_nn_hubness(u_1_4_60["allsamples"],5)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_5_60_globalhubness_k5"] = dist_nn_hubness(u_1_5_60["allsamples"],5)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_2_100_globalhubness_k5"] = dist_nn_hubness(u_1_2_100["allsamples"],5)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_3_100_globalhubness_k5"] = dist_nn_hubness(u_1_3_100["allsamples"],5)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_4_100_globalhubness_k5"] = dist_nn_hubness(u_1_4_100["allsamples"],5)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_5_100_globalhubness_k5"] = dist_nn_hubness(u_1_5_100["allsamples"],5)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_2_30_globalhubness_k10"] = dist_nn_hubness(u_1_2_30["allsamples"],10)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_3_30_globalhubness_k10"] = dist_nn_hubness(u_1_3_30["allsamples"],10)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_4_30_globalhubness_k10"] = dist_nn_hubness(u_1_4_30["allsamples"],10)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_5_30_globalhubness_k10"] = dist_nn_hubness(u_1_5_30["allsamples"],10)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_2_60_globalhubness_k10"] = dist_nn_hubness(u_1_2_60["allsamples"],10)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_3_60_globalhubness_k10"] = dist_nn_hubness(u_1_3_60["allsamples"],10)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_4_60_globalhubness_k10"] = dist_nn_hubness(u_1_4_60["allsamples"],10)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_5_60_globalhubness_k10"] = dist_nn_hubness(u_1_5_60["allsamples"],10)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_2_100_globalhubness_k10"] = dist_nn_hubness(u_1_2_100["allsamples"],10)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_3_100_globalhubness_k10"] = dist_nn_hubness(u_1_3_100["allsamples"],10)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_4_100_globalhubness_k10"] = dist_nn_hubness(u_1_4_100["allsamples"],10)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_5_100_globalhubness_k10"] = dist_nn_hubness(u_1_5_100["allsamples"],10)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_2_30_globalhubness_k50"] = dist_nn_hubness(u_1_2_30["allsamples"],50)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_3_30_globalhubness_k50"] = dist_nn_hubness(u_1_3_30["allsamples"],50)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_4_30_globalhubness_k50"] = dist_nn_hubness(u_1_4_30["allsamples"],50)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_5_30_globalhubness_k50"] = dist_nn_hubness(u_1_5_30["allsamples"],50)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_2_60_globalhubness_k50"] = dist_nn_hubness(u_1_2_60["allsamples"],50)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_3_60_globalhubness_k50"] = dist_nn_hubness(u_1_3_60["allsamples"],50)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_4_60_globalhubness_k50"] = dist_nn_hubness(u_1_4_60["allsamples"],50)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_5_60_globalhubness_k50"] = dist_nn_hubness(u_1_5_60["allsamples"],50)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_2_100_globalhubness_k50"] = dist_nn_hubness(u_1_2_100["allsamples"],50)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_3_100_globalhubness_k50"] = dist_nn_hubness(u_1_3_100["allsamples"],50)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_4_100_globalhubness_k50"] = dist_nn_hubness(u_1_4_100["allsamples"],50)[2]
-scipy.io.savemat("global_stats.mat",global_stats_dict)
-global_stats_dict["u_1_5_100_globalhubness_k50"] = dist_nn_hubness(u_1_5_100["allsamples"],50)[2]
+global_stats_dict["u_1_2_30_globalhubness_k5"] = dist_nn_hubness(u_1_2_30["X"],5)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_3_30_globalhubness_k5"] = dist_nn_hubness(u_1_3_30["X"],5)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_4_30_globalhubness_k5"] = dist_nn_hubness(u_1_4_30["X"],5)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_5_30_globalhubness_k5"] = dist_nn_hubness(u_1_5_30["X"],5)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_2_60_globalhubness_k5"] = dist_nn_hubness(u_1_2_60["X"],5)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_3_60_globalhubness_k5"] = dist_nn_hubness(u_1_3_60["X"],5)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_4_60_globalhubness_k5"] = dist_nn_hubness(u_1_4_60["X"],5)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_5_60_globalhubness_k5"] = dist_nn_hubness(u_1_5_60["X"],5)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_2_100_globalhubness_k5"] = dist_nn_hubness(u_1_2_100["X"],5)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_3_100_globalhubness_k5"] = dist_nn_hubness(u_1_3_100["X"],5)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_4_100_globalhubness_k5"] = dist_nn_hubness(u_1_4_100["X"],5)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_5_100_globalhubness_k5"] = dist_nn_hubness(u_1_5_100["X"],5)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_2_30_globalhubness_k10"] = dist_nn_hubness(u_1_2_30["X"],10)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_3_30_globalhubness_k10"] = dist_nn_hubness(u_1_3_30["X"],10)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_4_30_globalhubness_k10"] = dist_nn_hubness(u_1_4_30["X"],10)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_5_30_globalhubness_k10"] = dist_nn_hubness(u_1_5_30["X"],10)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_2_60_globalhubness_k10"] = dist_nn_hubness(u_1_2_60["X"],10)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_3_60_globalhubness_k10"] = dist_nn_hubness(u_1_3_60["X"],10)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_4_60_globalhubness_k10"] = dist_nn_hubness(u_1_4_60["X"],10)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_5_60_globalhubness_k10"] = dist_nn_hubness(u_1_5_60["X"],10)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_2_100_globalhubness_k10"] = dist_nn_hubness(u_1_2_100["X"],10)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_3_100_globalhubness_k10"] = dist_nn_hubness(u_1_3_100["X"],10)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_4_100_globalhubness_k10"] = dist_nn_hubness(u_1_4_100["X"],10)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_5_100_globalhubness_k10"] = dist_nn_hubness(u_1_5_100["X"],10)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_2_30_globalhubness_k50"] = dist_nn_hubness(u_1_2_30["X"],50)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_3_30_globalhubness_k50"] = dist_nn_hubness(u_1_3_30["X"],50)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_4_30_globalhubness_k50"] = dist_nn_hubness(u_1_4_30["X"],50)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_5_30_globalhubness_k50"] = dist_nn_hubness(u_1_5_30["X"],50)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_2_60_globalhubness_k50"] = dist_nn_hubness(u_1_2_60["X"],50)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_3_60_globalhubness_k50"] = dist_nn_hubness(u_1_3_60["X"],50)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_4_60_globalhubness_k50"] = dist_nn_hubness(u_1_4_60["X"],50)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_5_60_globalhubness_k50"] = dist_nn_hubness(u_1_5_60["X"],50)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_2_100_globalhubness_k50"] = dist_nn_hubness(u_1_2_100["X"],50)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_3_100_globalhubness_k50"] = dist_nn_hubness(u_1_3_100["X"],50)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_4_100_globalhubness_k50"] = dist_nn_hubness(u_1_4_100["X"],50)[2]
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
+global_stats_dict["u_1_5_100_globalhubness_k50"] = dist_nn_hubness(u_1_5_100["X"],50)[2]
 
-scipy.io.savemat("global_stats.mat",global_stats_dict)
+scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
 
 end = time.time()
 print(start)
 print(end)
-print(end-start)scipy.io.savemat("global_stats.mat",global_stats_dict)
+print(end-start)
