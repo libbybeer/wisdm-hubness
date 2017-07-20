@@ -12,10 +12,13 @@ lr = length(dr);
 for i=1:ld
     for j=1:lr
         load(['gaussians_1000_' num2str(dr(j)) '000_' num2str(dim(i)) '.mat'])
-        [~,q,~,d] = KDE(allsamples,allsamples,ka,kL);
+        [dis,~] = pdist2(allsamples,allsamples,'euclidean','Smallest',16);
+        q = 1./dis(end,:)';
+%         [~,q,~,d] = KDE(allsamples,allsamples,ka,kL);
         dens_ave = [0 0];
         dens_ave(1)=mean(q(1:1000));
         dens_ave(2)=mean(q(1001:end));
+%         disp(['dim= ' num2str(dim(i)) ', 1 to ' num2str(dr(j)) ', average density per cluster = ' num2str(dens_ave)])
         save(['gauss-density-dim' num2str(dim(i)) '-1000-' num2str(dr(j)) '000.mat'],'dens_ave','q')
     end
 end
@@ -25,13 +28,14 @@ end
 for i=1:ld
     for j=1:lr
         load(['unif-dim' num2str(dim(i)) '-1000-' num2str(dr(j)) '000.mat'])
-        [~,q,~,d] = KDE(X,X,16,500);
+        [dis,~] = pdist2(X,X,'euclidean','Smallest',16);
+        q = 1./dis(end,:)';
+%         [~,q,~,d] = KDE(allsamples,allsamples,ka,kL);
         dens_ave = [0 0];
         dens_ave(1)=mean(q(1:1000));
         dens_ave(2)=mean(q(1001:end));
+%         disp(['dim= ' num2str(dim(i)) ', 1 to ' num2str(dr(j)) ', average density per cluster = ' num2str(dens_ave)])
         save(['unif-density-dim' num2str(dim(i)) '-1000-' num2str(dr(j)) '000.mat'],'dens_ave','q')
-%         dens_cave(2)/dens_cave(1)
-%         [dim(i),dr(j)]
     end
 end
 
