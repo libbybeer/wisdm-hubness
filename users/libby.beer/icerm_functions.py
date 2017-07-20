@@ -57,3 +57,52 @@ def above_n_sigmas(x,n):
     m = np.mean(x)
     s = np.std(x)
     return [i for i in range(len(x)) if x[i] > m+n*s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def compute_global_hubnesses(ratio,d,k,datatype="gaussian",
+                             data_fileprefix="../../shared_data/",
+                             out_fileprefix="",out_filepostfix="_global_hubnesses.mat",
+                             print_times=True):
+    if print_times:
+        print(time.asctime(time.localtime())+" - about to compute global hubnesses for ratio "+
+              str(ratio)+", d="+str(d)+", k="+str(k)+", datatype="+datatype+"\n")
+    if datatype=="gaussian":
+        data_filename = "gaussians_1000_"+str(ratio)+"000_"+str(d)+".mat"
+        data_index = "allsamples"
+    elif datatype=="uniform":
+        data_filename = "unif-dim"+str(d)+"-1000-"+str(ratio)+"000.mat"
+        data_index = "X"
+    else:
+        print("You specified "+datatype+", which isn't a datatype I recognize.")
+        return None
+    samples = scipy.io.loadmat(data_fileprefix+data_filename)
+    hubness = dist_nn_hubness(samples[data_index],k)[2]
+    out_filename = data_filename[:-4]+out_filepostfix
+    scipy.io.savemat(out_filename,{"hubnesses":hubness})
+    if print_times:
+        print(time.asctime(time.localtime())+" - computed global hubnesses for ratio "+
+              str(ratio)+", d="+str(d)+", k="+str(k)+", datatype="+datatype+"\n")
+
+
+
+
