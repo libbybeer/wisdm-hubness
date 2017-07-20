@@ -6,7 +6,7 @@ ka = 16;
 kL = 100;
 knn = [5 10 50];
 dcolor = ['k' 'b' 'c' 'r'];
-kmarker = ['*' 'o' 'd'];
+kmarker = ['x' '*' 'o'];
 
 % Gaussians
 ld = length(dim);
