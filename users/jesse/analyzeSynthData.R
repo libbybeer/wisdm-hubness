@@ -244,27 +244,27 @@ for (filename in priyafiles){
          main="Distances between (all) points", xlab="Distance between points",
          xlim=c(0, max(mydist))) 
     mtext(outfile, side=3, line=3)
-    hist(c(mydist[highhubidx0, highhubidx0]),
-         main="IntrA-cluster distances (cluster 0)", freq=FALSE,
-         xlab="Distance between cluster-0 hubs",
-         xlim=c(0, max(mydist)), col='blue', breaks=100)
-#    hist(c(mydist[highhubidx0, highhubidx1],
-#          mydist[highhubidx1, highhubidx1]),
-#         main="IntrA-cluster distances", freq=FALSE,
-#         xlab="Distance between same-cluster hubs",
+#    hist(c(mydist[highhubidx0, highhubidx0]),
+#         main="IntrA-cluster distances (cluster 0)", freq=FALSE,
+#         xlab="Distance between cluster-0 hubs",
 #         xlim=c(0, max(mydist)), col='blue', breaks=100)
+    hist(c(mydist[highhubidx0, highhubidx0],
+          mydist[highhubidx1, highhubidx1]),
+         main="IntrA-cluster distances", freq=FALSE,
+         xlab="Distance between same-cluster hubs",
+         xlim=c(0, max(mydist)), col='blue', breaks=100)
     hist(mydist[highhubidx, highhubidx] ,col='blue', breaks=100, freq=FALSE,
          main="Distances between hubs", xlab="Distance between hubs",
          xlim=c(0,max(mydist)))
-    hist(c(mydist[highhubidx1, highhubidx1]),
-         main="IntrA-cluster distances (cluster 1)", freq=FALSE,
-         xlab="Distance between cluster-1 hubs",
-         xlim=c(0, max(mydist)), col='blue', breaks=100)
+#    hist(c(mydist[highhubidx1, highhubidx1]),
+#         main="IntrA-cluster distances (cluster 1)", freq=FALSE,
+#         xlab="Distance between cluster-1 hubs",
+#         xlim=c(0, max(mydist)), col='blue', breaks=100)
 
-    #hist(c(mydist[highhubidx0, highhubidx1],mydist[highhubidx1, highhubidx0]),
-    #     main="IntER-cluster distances", freq=FALSE,
-    #     xlab="Distance between diff-cluster hubs",
-    #     xlim=c(0, max(mydist)), col='blue', breaks=100)
+    hist(c(mydist[highhubidx0, highhubidx1],mydist[highhubidx1, highhubidx0]),
+         main="IntER-cluster distances", freq=FALSE,
+         xlab="Distance between diff-cluster hubs",
+         xlim=c(0, max(mydist)), col='blue', breaks=100)
     #abline(v=intermean, col='orange', lwd=2)
     #abline(v=intramean, col='orange', lwd=2)
     
