@@ -9,6 +9,6 @@ gauss-hubness* -
 	"N_k" contains the hubness score (k-occurrences, filename gives k)
 	"hubs" contains a 0 or 1 for each point, 1 if this point is a 
 		2-sigma hub
-	"xdens_yhubs" contains ?
+	"xdens_yhubs" contains the average density per cluster in the first column and the 		fraction of hubs in each cluster to the total number of hubs in the second 		column
 unif-density* - same as gauss-density but for uniform hypercubes
 unif-hubness* - same as gauss-hubness but for uniform hypercubes
