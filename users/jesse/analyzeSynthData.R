@@ -181,3 +181,94 @@ for (filename in uniformfiles){
   }
 }
   
+
+# Pony now applying one trick to Priya's 30/50 data
+# Write out ranked distance matrices
+dir = '/users/guest427/wisdm-hubness/priya_data/'
+filelist = list.files(dir)
+priyafiles = filelist[grepl('30_50', filelist)][-1]
+for (filename in priyafiles) {
+  matdata = readMat(paste0(dir,filename), sparseMatrixClass='matrix')
+  mydata=matdata$samples
+  # put together the cluster labels for ground truth
+  # Have 1000 data points in 0 class, the rest are class 1
+  n=dim(mydata)[1]
+  ground = matdata$ground
+  # Check what we have
+  n
+  table(ground)
+  # Get the hubness scores
+  mydist = as.matrix(dist(mydata, method='euclidean'))
+  rankedmatdata = rankdist(mydist)
+  write.table(rankedmatdata, file=paste0(outputdir, filename,'.ranked'),
+              col.names=FALSE, row.names=FALSE)
+}
+
+# Draw pictures
+for (filename in priyafiles){
+  for (k in c(5,10,50) ) {
+    matdata = readMat(paste0(dir,filename), sparseMatrixClass='matrix')
+    # put together the cluster labels for ground truth
+    mydata=matdata$samples
+    n=dim(mydata)[1]
+    ground = matdata$ground
+    # Check what we have
+    n
+    table(ground)
+    # Get the hubness scores
+    
+    mydist = as.matrix(dist(mydata, method='euclidean'))
+    rankedmatdata = read.table(paste0(outputdir, filename, '.ranked'))
+    hubscores = all_hubness(k, rankedmatdata)
+    
+    # Find my "hubs"
+    highhubidx = which(hubscores > mean(hubscores) + 2*sd(hubscores))
+    highhubidx0 = intersect(highhubidx, which(ground==0))
+    highhubidx1 = intersect(highhubidx, which(ground==1))
+    
+    # Look at them in all the ways
+    # How many hubs per cluster?
+    hubperclust = table(ground[highhubidx])
+    hubperclust
+    # what percent of points in the cluster are hubs?
+    hubperclust / table(ground)
+    # Look at distances between points, and distances between hubs
+    intramean = mean(c(mydist[highhubidx0, highhubidx0], mydist[highhubidx1, highhubidx1]))
+    intermean = mean(c(mydist[highhubidx0, highhubidx1], mydist[highhubidx1, highhubidx0]))
+    
+    outfile =paste0("/users/guest427/wisdm-hubness//users/jesse//graphs/", 
+                    filename, '.',k,'.png')
+    png(outfile)
+    par(mfrow=c(2, 2))
+    hist(mydist ,col='blue', breaks=100, freq=FALSE,
+         main="Distances between (all) points", xlab="Distance between points",
+         xlim=c(0, max(mydist))) 
+    mtext(outfile, side=3, line=3)
+    hist(c(mydist[highhubidx0, highhubidx0]),
+         main="IntrA-cluster distances (cluster 0)", freq=FALSE,
+         xlab="Distance between cluster-0 hubs",
+         xlim=c(0, max(mydist)), col='blue', breaks=100)
+#    hist(c(mydist[highhubidx0, highhubidx1],
+#          mydist[highhubidx1, highhubidx1]),
+#         main="IntrA-cluster distances", freq=FALSE,
+#         xlab="Distance between same-cluster hubs",
+#         xlim=c(0, max(mydist)), col='blue', breaks=100)
+    hist(mydist[highhubidx, highhubidx] ,col='blue', breaks=100, freq=FALSE,
+         main="Distances between hubs", xlab="Distance between hubs",
+         xlim=c(0,max(mydist)))
+    hist(c(mydist[highhubidx1, highhubidx1]),
+         main="IntrA-cluster distances (cluster 1)", freq=FALSE,
+         xlab="Distance between cluster-1 hubs",
+         xlim=c(0, max(mydist)), col='blue', breaks=100)
+
+    #hist(c(mydist[highhubidx0, highhubidx1],mydist[highhubidx1, highhubidx0]),
+    #     main="IntER-cluster distances", freq=FALSE,
+    #     xlab="Distance between diff-cluster hubs",
+    #     xlim=c(0, max(mydist)), col='blue', breaks=100)
+    #abline(v=intermean, col='orange', lwd=2)
+    #abline(v=intramean, col='orange', lwd=2)
+    
+    dev.off()
+  }
+}
+
