@@ -156,26 +156,26 @@ for (filename in uniformfiles){
     hist(mydist ,col='blue', breaks=100, freq=FALSE,
          main="Distances between (all) points", xlab="Distance between points",
          xlim=c(0, max(mydist))) 
-    abline(v=intermean+.5, col='red', lwd=2)
-    abline(v=intramean+.5, col='red', lwd=2)
+    abline(v=intermean+.5, col='orange', lwd=2)
+    abline(v=intramean+.5, col='orange', lwd=2)
     mtext(outfile, side=3, line=3)
     hist(c(mydist[highhubidx0, highhubidx0],mydist[highhubidx1, highhubidx1]),
          main="IntrA-cluster distances", freq=FALSE,
          xlab="Distance between same-cluster hubs",
          xlim=c(0, max(mydist)), col='blue', breaks=100)
-    abline(v=intermean, col='red', lwd=2)
-    abline(v=intramean, col='red', lwd=2)
+    abline(v=intermean, col='orange', lwd=2)
+    abline(v=intramean, col='orange', lwd=2)
     hist(mydist[highhubidx, highhubidx] ,col='blue', breaks=100, freq=FALSE,
          main="Distances between hubs", xlab="Distance between hubs",
          xlim=c(0,max(mydist)))
-    abline(v=intermean, col='red', lwd=2)
-    abline(v=intramean, col='red', lwd=2)
+    abline(v=intermean, col='orange', lwd=2)
+    abline(v=intramean, col='orange', lwd=2)
     hist(c(mydist[highhubidx0, highhubidx1],mydist[highhubidx1, highhubidx0]),
          main="IntER-cluster distances", freq=FALSE,
          xlab="Distance between diff-cluster hubs",
          xlim=c(0, max(mydist)), col='blue', breaks=100)
-    abline(v=intermean, col='red', lwd=2)
-    abline(v=intramean, col='red', lwd=2)
+    abline(v=intermean, col='orange', lwd=2)
+    abline(v=intramean, col='orange', lwd=2)
     
     dev.off()
   }
