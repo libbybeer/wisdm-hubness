@@ -416,6 +416,21 @@ print(time.asctime(time.localtime())+" u 1,3,60,k50\n")
 #scipy.io.savemat("global_stats_uniform.mat",global_stats_dict)
 #print(time.asctime(time.localtime())+" u 1,5,100,k50\n")
 
+
+
+a = scipy.io.loadmat("C:/Users/Libby/Documents/GitHub/wisdm-hubness/users/libby.beer/global_stats_uniform.mat")
+g = scipy.io.loadmat("C:/Users/Libby/Documents/GitHub/wisdm-hubness/users/libby.beer/global_stats.mat.old")
+g_density = scipy.io.loadmat("../../shared_results/gauss-density-dim30-1000-5000.mat")
+hubs = above_n_sigmas(a['u_1_5_30_globalhubness_k5'].T,2)
+plt.interactive(True)
+plt.scatter(g_density['q'],g['g_1_5_30_globalhubness_k5'].T)
+plt.scatter(g_density['q'][myg_hubs],g['g_1_5_30_globalhubness_k5'].T[myg_hubs],c="red")
+
+
+
+
+
+
 end = time.time()
 print(start)
 print(end)
