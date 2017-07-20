@@ -168,7 +168,7 @@ def illustrate_gaussian_data(ratio,d,k):
     data_filename = "gaussians_1000_"+str(ratio)+"000_"+str(d)+".mat"
     #data_filename = "unif-dim"+str(d)+"-1000-"+str(ratio)+"000.mat"
     print(data_fileprefix+data_filename)
-    samples = scipy.io.loadmat(data_fileprefix+data_filename)["X"]
+    samples = scipy.io.loadmat(data_fileprefix+data_filename)["allsamples"]
     print(samples.shape)
     print(samples[0].shape)
     fig = plt.figure()
