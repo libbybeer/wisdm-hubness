@@ -38,7 +38,7 @@ for i=1:ld
         end
     end
     legend('k=5','k=10','k=50','Location','northwest');
-    title(['gauss, dim=' num2str(dim(i)) ', black to red = increasing density'])% ', magenta=k5,blue=k10,cyan=k50'])
+    title(['gauss, dim=' num2str(dim(i)) ' black to red = increasing density'])% ', magenta=k5,blue=k10,cyan=k50'])
     xlabel('Average Density per cluster')
     ylabel('Fraction of hubs per cluster')
     hold off
@@ -57,7 +57,7 @@ for i=1:ld
         end
     end
     legend('k=5','k=10','k=50','Location','northwest');
-    title(['unif, dim=' num2str(dim(i)) ', black to red = increasing density'])% ', magenta=k5,blue=k10,cyan=k50'])
+    title(['unif, dim=' num2str(dim(i)) 'black to red = increasing density'])% ', magenta=k5,blue=k10,cyan=k50'])
     xlabel('Average Density per cluster')
     ylabel('Fraction of hubs per cluster')
     hold off

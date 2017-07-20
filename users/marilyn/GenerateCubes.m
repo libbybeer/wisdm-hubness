@@ -9,6 +9,8 @@ ld = length(dim);
 lr = length(dr);
 lk = length(k);
 
+rng(0)
+
 for i=1:ld
     for j=1:lr
         X = [rand(bpts,1)-2,rand(bpts,dim(i)-1);rand(dr(j)*bpts,1)+1,rand(dr(j)*bpts,dim(i)-1)];
