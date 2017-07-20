@@ -12,6 +12,6 @@ lk = length(k);
 for i=1:ld
     for j=1:lr
         X = [rand(bpts,1)-2,rand(bpts,dim(i)-1);rand(dr(j)*bpts,1)+1,rand(dr(j)*bpts,dim(i)-1)];
-        save(['uniform-dim' num2str(dim(i)) '-1k-' num2str(dr(j)) 'k.mat'],'X')
+        save(['unif-dim' num2str(dim(i)) '-1000-' num2str(dr(j)) '000.mat'],'X')
     end
 end
