@@ -175,7 +175,7 @@ def illustrate_gaussian_data(ratio,d,k):
     fig.suptitle("Two spherical Gaussians in "+str(d)+" dimensions, density ratio 1:"+str(ratio))
     ax = fig.add_subplot(111,projection='3d')
     ax.set_xlabel("separating dimension")
-    ax.scatter(samples.T[0],samples.T[1],samples.T[2])
+    ax.scatter(samples.T[0],samples.T[1],samples.T[2],linewidth=0,c="cadetblue")
     plt.show()
 
 def hubs_per_cluster(ratio,d,k,datatype="gaussian",data_fileprefix="../../shared_data/",
