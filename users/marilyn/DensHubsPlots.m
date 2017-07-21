@@ -64,43 +64,43 @@ for i=1:ld
     count = count+1;
 end
 
-%%% See change in dimension
-
-% Gaussian
-count = 1;
-for j=1:lr
-    figure(count);
-    hold on
-    for k=1:lk
-        for i=1:ld
-            load(['gauss-hubness' num2str(dim(i)) '-1000-' num2str(dr(j)) '000-k' num2str(knn(k)) '.mat'])
-            scatter(xdens_yhubs(:,1),xdens_yhubs(:,2),30,kmarker(j),dcolor(k))
-        end
-    end
-    legend('1to2','1to3','1to4','1to5');
-    title(['gauss, dim=' num2str(dim(i)) ', magenta=k5,blue=k10,cyan=k50'])
-    xlabel('Average Density per cluster')
-    ylabel('Fraction of hubs per cluster')
-    hold off
-    count = count+1;
-end
-
-% Uniform
-
-
-for k=1:lk
-    figure(count);
-    hold on
-    for i=1:ld
-        for j=1:lr
-            load(['unif-hubness' num2str(dim(i)) '-1000-' num2str(dr(j)) '000-k' num2str(knn(k)) '.mat'])
-            scatter(xdens_yhubs(:,1),xdens_yhubs(:,2),30,kmarker(j),dcolor(k))
-        end
-    end
-    legend('1to2','1to3','1to4','1to5');
-    title(['unif, dim=' num2str(dim(i)) ', magenta=k5,blue=k10,cyan=k50'])
-    xlabel('Average Density per cluster')
-    ylabel('Fraction of hubs per cluster')
-    hold off
-    count = count+1;
-end
+% %%% See change in dimension
+% 
+% % Gaussian
+% count = 1;
+% for j=1:lr
+%     figure(count);
+%     hold on
+%     for k=1:lk
+%         for i=1:ld
+%             load(['gauss-hubness' num2str(dim(i)) '-1000-' num2str(dr(j)) '000-k' num2str(knn(k)) '.mat'])
+%             scatter(xdens_yhubs(:,1),xdens_yhubs(:,2),30,kmarker(j),dcolor(k))
+%         end
+%     end
+%     legend('1to2','1to3','1to4','1to5');
+%     title(['gauss, dim=' num2str(dim(i)) ', magenta=k5,blue=k10,cyan=k50'])
+%     xlabel('Average Density per cluster')
+%     ylabel('Fraction of hubs per cluster')
+%     hold off
+%     count = count+1;
+% end
+% 
+% % Uniform
+% 
+% 
+% for k=1:lk
+%     figure(count);
+%     hold on
+%     for i=1:ld
+%         for j=1:lr
+%             load(['unif-hubness' num2str(dim(i)) '-1000-' num2str(dr(j)) '000-k' num2str(knn(k)) '.mat'])
+%             scatter(xdens_yhubs(:,1),xdens_yhubs(:,2),30,kmarker(j),dcolor(k))
+%         end
+%     end
+%     legend('1to2','1to3','1to4','1to5');
+%     title(['unif, dim=' num2str(dim(i)) ', magenta=k5,blue=k10,cyan=k50'])
+%     xlabel('Average Density per cluster')
+%     ylabel('Fraction of hubs per cluster')
+%     hold off
+%     count = count+1;
+% end
