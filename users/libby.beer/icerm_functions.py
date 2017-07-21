@@ -186,3 +186,34 @@ def hubs_per_cluster(ratio,d,k,datatype="gaussian",data_fileprefix="../../shared
     hubs0 = len([y for y in hubs if y<1000])
     hubs1 = len([y for y in hubs if y>=1000])
     return np.array([hubs0,hubs1])
+
+def illustrate_priya_data():
+    # load Priya's data
+    synthetic_data_30_50_overlap30 = scipy.io.loadmat("C://Users//Libby/Hubness/Datasets/synthetic_data_30_50_overlap30.mat")
+    overlap_class0 = np.array([x for (x,y) in zip(synthetic_data_30_50_overlap30["samples"],
+                   synthetic_data_30_50_overlap30["ground"]) if y==0])
+    overlap_class1 = np.array([x for (x,y) in zip(synthetic_data_30_50_overlap30["samples"],
+                   synthetic_data_30_50_overlap30["ground"]) if y==1])   
+    fig = plt.figure()
+    fig.suptitle("Two spherical Gaussians in 30 and 50 dimensions, embedded in 100 dimensions")
+    ax = fig.add_subplot(111,projection="3d")
+    ax.scatter(overlap_class0.T[25],overlap_class0.T[35],overlap_class0.T[60],
+               linewidth=0,c="cadetblue")
+    ax.scatter(overlap_class1.T[25],overlap_class1.T[35],overlap_class1.T[60],
+               linewidth=0,c="sandybrown")
+    plt.show()
+    
+def illustrate_spam_data():
+    spam_data = scipy.io.loadmat("C:/Users/Libby/Hubness/Datasets/data_spam.mat")
+    spam_class0 = np.array([x for (x,y) in zip(spam_data["data_sample"],
+                   spam_data["ground"]) if y==0])
+    spam_class1 = np.array([x for (x,y) in zip(spam_data["data_sample"],
+                   spam_data["ground"]) if y==1])
+    fig = plt.figure()
+    fig.suptitle("Spam data")
+    ax = fig.add_subplot(111,projection="3d")
+    ax.scatter(spam_class0.T[1],spam_class0.T[5],spam_class0.T[2],
+               s=40,linewidth=0,c="cadetblue")
+    ax.scatter(spam_class1.T[1],spam_class1.T[5],spam_class1.T[2],
+               s=40,linewidth=0,c="sandybrown")
+    plt.show()
