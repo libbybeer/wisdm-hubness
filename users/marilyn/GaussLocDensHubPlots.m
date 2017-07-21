@@ -27,13 +27,13 @@ for i=2:2
             thr = mean(N_k)+2*std(N_k);
             scatter(q(1:1000),N_k(1:1000),30,'b')
             scatter(q(1001:end),N_k(1001:end),30,'r')
-            plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-k')
+            plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-k','LineWidth',2)
             thr = mean(q)+2*std(q);
             dense = q>= thr;
             notdense = q< thr;
 %             scatter(q(dense),N_k(dense),30,'b')
 %             scatter(q(notdense),N_k(notdense),30,'r')
-            plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-k')
+            plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-k','LineWidth',2)
             tl = sum(hubs.*notdense);
             tr = sum(hubs.*dense);
             bl = sum(nothubs.*notdense);
@@ -45,8 +45,9 @@ for i=2:2
                 text(pos(it,1),pos(it,2),[num2str(grid_vals(it)) '%'],'fontsize',20)
             end
             title(['gauss, dim=' num2str(dim(i)) ', dens=1to' num2str(dr(j)) ', k=' num2str(knn(k))])% ', black to red = increasing density'])% ', magenta=k5,blue=k10,cyan=k50'])
-            xlabel('Sample Density')
+            xlabel('Local Density')
             ylabel('Hubness Score')
+            set(gca,'fontsize',20)
             hold off
             count = count+1;
         end

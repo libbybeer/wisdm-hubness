@@ -118,7 +118,69 @@ Can hubs help us cluster?
 
 
 \begin{frame}
-\frametitle{Marilyn goes here}
+\frametitle{Do hubs appear in high density regions?}
+
+Intuition
+
+\smallskip
+
+\centering
+\includegraphics[width=3.2in,height=2.5in]{./fig/DensHub-Intuition.png}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Do hubs appear in high density regions?}
+
+{\small Answer: Sometimes!}
+
+\smallskip
+
+\centering
+\includegraphics[width=3.5in,height=2.5in]{./fig/gauss-dim60-1000to2000-k10-DensHub.png}
+
+\smallskip
+
+{\small Notice: (1) Proportion of hubs in the two density regions, (2) proportion of high density points that are hubs, and (3) more hubs in the denser cluster.}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Do hubs appear in high density regions?}
+
+{\small Answer: Sometimes!}
+
+\smallskip
+
+\centering
+\includegraphics[width=3.5in,height=2.5in]{./fig/gauss-dim60-1000to5000-k10-DensHub.png}
+
+\smallskip
+
+{\small Notice: (1) A LOT more hubs in the denser cluster and (2) the rise of two ``wings'' that correspond to the two different cluster.}
+\end{frame}
+
+\begin{frame}
+\frametitle{Observations}
+
+From the experiments on the Gaussian data, we observe that:
+
+\begin{itemize}
+\item About 13 out of 36 experiments, there was a larger proportion of hubs in the low density region i.e. hubness scores and density are not exactly the same thing
+\item About 23 out of 36 experiments, there was a larger proportion of hubs in the high density region i.e. if a point is a hub, it is more likely to be in a high density region.
+\item All our experiments show that high density regions are mostly composed of hubs i.e. if a point is in a high density region, it is most likely a hub.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Future Work}
+
+\begin{itemize}
+\item More experiments of local density versus hubness scores for other density types e.g. uniform density
+\item Verify if patterns also show up in real data
+\item Data with more clusters to see if ``wings'' arise for each cluster
+\end{itemize}
 
 \end{frame}
 
