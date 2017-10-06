@@ -33,22 +33,21 @@ for i=1:ld
         for k=1:lk
             load(['gauss-hubness' num2str(dim(i)) '-1000-' num2str(dr(j)) '000-k' num2str(knn(k)) '.mat'])
             load(['gauss-density-dim' num2str(dim(i)) '-1000-' num2str(dr(j)) '000.mat'])
-            %             scatter(q,N_k,30,kmarker(k),dcolor(j))
             figure(count);
             hold on
-            thr = mean(N_k)+2*std(N_k);
-%             thr = mean(N_k(1:1000))+2*std(N_k(1:1000));
+%             thr = mean(N_k)+2*std(N_k);
+            thr = mean(N_k(1:1000))+2*std(N_k(1:1000));
 %             scatter(q,N_k,30,dcolor(j))
-            scatter(q(1:1000),N_k(1:1000),30,'b')
-            scatter(q(1001:end),N_k(1001:end),30,'r')
-            plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-k')
-%             thr = mean(N_k(1001:end))+2*std(N_k(1001:end));
-%             plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-k')
-%             thr = mean(q(1:1000))+2*std(q(1:1000));
-            thr = mean(q)+2*std(q);
-            plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-k')
-%             thr = mean(q(1001:end))+2*std(q(1001:end));
-%             plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-g')
+            scatter(q(1:1000),N_k(1:1000),30,'c')
+            scatter(q(1001:end),N_k(1001:end),30,'m')
+            plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-b','LineWidth',2)
+            thr = mean(N_k(1001:end))+2*std(N_k(1001:end));
+            plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-r','LineWidth',2)
+            thr = mean(q(1:1000))+2*std(q(1:1000));
+%             thr = mean(q)+2*std(q);
+            plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-b','LineWidth',2)
+            thr = mean(q(1001:end))+2*std(q(1001:end));
+            plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-r','LineWidth',2)
             title(['gauss, dim=' num2str(dim(i)) ', dens=1to' num2str(dr(j)) ', k=' num2str(knn(k))])% ', black to red = increasing density'])% ', magenta=k5,blue=k10,cyan=k50'])
             xlabel('Sample Density')
             ylabel('Hubness Score')
@@ -56,7 +55,6 @@ for i=1:ld
             hold off
             count = count+1;
         end
-%         legend('k=5','k=10','k=50','Location','northwest');
     end
 end
 
@@ -67,16 +65,21 @@ for i=1:ld
         for k=1:lk
             load(['unif-hubness' num2str(dim(i)) '-1000-' num2str(dr(j)) '000-k' num2str(knn(k)) '.mat'])
             load(['unif-density-dim' num2str(dim(i)) '-1000-' num2str(dr(j)) '000.mat'])
-            %             scatter(q,N_k,30,kmarker(k),dcolor(j))
             figure(count);
             hold on
-            thr = mean(N_k)+2*std(N_k);
+%             thr = mean(N_k)+2*std(N_k);
+            thr = mean(N_k(1:1000))+2*std(N_k(1:1000));
 %             scatter(q,N_k,30,dcolor(j))
-            scatter(q(1:1000),N_k(1:1000),30,'b')
-            scatter(q(1001:end),N_k(1001:end),30,'r')
-            plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-k')
-            thr = mean(q)+2*std(q);
-            plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-k')
+            scatter(q(1:1000),N_k(1:1000),30,'c')
+            scatter(q(1001:end),N_k(1001:end),30,'m')
+            plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-b','LineWidth',2)
+            thr = mean(N_k(1001:end))+2*std(N_k(1001:end));
+            plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-r','LineWidth',2)
+            thr = mean(q(1:1000))+2*std(q(1:1000));
+%             thr = mean(q)+2*std(q);
+            plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-b','LineWidth',2)
+            thr = mean(q(1001:end))+2*std(q(1001:end));
+            plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-r','LineWidth',2)
             title(['unif, dim=' num2str(dim(i)) ', dens=1to' num2str(dr(j)) ', k=' num2str(knn(k))])% ', black to red = increasing density'])% ', magenta=k5,blue=k10,cyan=k50'])
             xlabel('Sample Density')
             ylabel('Hubness Score')
@@ -84,6 +87,5 @@ for i=1:ld
             hold off
             count = count+1;
         end
-%         legend('k=5','k=10','k=50','Location','northwest');
     end
 end
