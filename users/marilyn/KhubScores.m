@@ -1,5 +1,18 @@
 function [N_k,hubs] = KhubScores(X,k)
 
+% KhubScores calculates the hubness scores given a k
+%
+% INPUTS:
+%       X - N by d matrix of points
+%       k - integer number indicating up to which k-nearest neighbor to
+%           count 
+%
+% OUTPUTS:
+%       N_k - N by 1 array of hubness scores for each point in X
+%       hubs- N by 1 logical array of points that are considered hubs
+%
+% Author: Marilyn Y. Vazquez
+
 %%% Set up
 [M,~] = size(X);% number of points
 N_k = zeros(M,1);% hubness score

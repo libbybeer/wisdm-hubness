@@ -1,4 +1,6 @@
-% Trying to make some nice plots
+% Trying to make some nice plots of local density against local hubness
+% Author: Marilyn Y. Vazquez
+
 dim = 60;%[30 60 100];
 dr = [2 4];%2:5;
 bpts = 1000;

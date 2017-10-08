@@ -1,4 +1,6 @@
 % How I calculated density
+% Author: Marilyn Y. Vazquez
+
 dim = [30 60 100];
 dr = 2:5;
 bpts = 1000;

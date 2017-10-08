@@ -1,4 +1,7 @@
-% Trying to make some nice plots
+% Trying to make some nice plots of average density against fraction of
+% hubs per cluster
+% Author: Marilyn Y. Vazquez
+
 dim = [30 60 100];
 dr = 2:5;
 bpts = 1000;

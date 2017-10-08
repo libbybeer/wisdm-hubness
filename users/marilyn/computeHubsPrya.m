@@ -1,5 +1,7 @@
 function [thresh_indices] = computeHubsPrya(samples)
 % Find Hubness score of data points
+% Author: Prya Mani
+
 neigh = 10; % neighborhood size
 numPts = size(samples,1);
 hubness = zeros(numPts,1);
