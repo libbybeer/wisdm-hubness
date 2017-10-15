@@ -43,12 +43,12 @@ for i=1:ld
 %             scatter(q,N_k,30,dcolor(j))
             scatter(q(1:1000),N_k(1:1000),30,'b')
             scatter(q(1001:end),N_k(1001:end),30,'r')
-            plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-k')
+            plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-k','LineWidth',2)
 %             thr = mean(N_k(1001:end))+2*std(N_k(1001:end));
 %             plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-k')
 %             thr = mean(q(1:1000))+2*std(q(1:1000));
             thr = mean(q)+2*std(q);
-            plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-k')
+            plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-k','LineWidth',2)
 %             thr = mean(q(1001:end))+2*std(q(1001:end));
 %             plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-g')
             title(['gauss, dim=' num2str(dim(i)) ', dens=1to' num2str(dr(j)) ', k=' num2str(knn(k))])% ', black to red = increasing density'])% ', magenta=k5,blue=k10,cyan=k50'])
@@ -76,9 +76,9 @@ for i=1:ld
 %             scatter(q,N_k,30,dcolor(j))
             scatter(q(1:1000),N_k(1:1000),30,'b')
             scatter(q(1001:end),N_k(1001:end),30,'r')
-            plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-k')
+            plot(min(q):(max(q)-min(q))/9:max(q),thr*ones(1,10),'-k','LineWidth',2)
             thr = mean(q)+2*std(q);
-            plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-k')
+            plot(thr*ones(1,10),min(N_k):(max(N_k)-min(N_k))/9:max(N_k),'-k','LineWidth',2)
             title(['unif, dim=' num2str(dim(i)) ', dens=1to' num2str(dr(j)) ', k=' num2str(knn(k))])% ', black to red = increasing density'])% ', magenta=k5,blue=k10,cyan=k50'])
             xlabel('Sample Density')
             ylabel('Hubness Score')
