@@ -93,14 +93,19 @@ To investigate the relationship between density hubness scores, and clustering, 
 \subsection{Hubness and Data Density}
 \label{sec:4.1}
 
-The first question to be addressed is whether hubness scores and density are the same measure. One way to see this is by plotting density against hubness scores. Suppose that there is a low density area, high density area, a low hubness score area and a high hubness score area, shown in Fig. \ref{fig:DensHubInt}. Intuition dictates that if density and hubness score were the same, all the points will lie within the first (high density and high hubness scores) and third (low density and low hubness scores) quadrants. If density and hubness score were the opposite, all the points will lie within the second (low density and high hubness scores) and fourth (high density and low hubness scores) quadrants. However, if the points are all over the four quadrants, then it might be telling of a different relationship between density and hubness scores. 
+The first question to be addressed is whether hubness scores and density are the same measure. One way to see this is by plotting density against hubness scores. Suppose that there is a low density area, high density area, a low hubness score area and a high hubness score area, as shown in Fig. \ref{fig:DensHubInt}. Intuition dictates that if density and hubness score were the same, all the points will lie within the first (high density and high hubness scores) and third (low density and low hubness scores) quadrants. If density and hubness score were the opposite, all the points will lie within the second (low density and high hubness scores) and fourth (high density and low hubness scores) quadrants. However, if the points are all over the four quadrants, then it might be telling of a different relationship between density and hubness scores. 
 
 \begin{figure}
 \centering
 \includegraphics[width=2in,height=2in]{../fig/DensHub-Intuition.png}
-\end{figure}\label{fig:DensHubInt}
+\caption{An illustration of the four quadrants, which are formed by density and hubness scores thresholds, that will be seen in the following experiments where density will be plotted against hubness scores.}\label{fig:DensHubInt}
+\end{figure}
 
-For the experiments, the hubness scores $N_k$ were calculated for all the points with $k=5,10,$ and $50$. As far as the density estimation, $q_k(x) = \frac{1}{||x-x_k||}$, where $x$ is a data point and $x_k$ is the $k$th nearest neighbor of $x$, was chosen for its efficiency and since more sophisticated non-parametric consistent density estimators also suffer from the curse of dimensionality. All the density estimation plots used $q_{16}$. To determine what is ``high density'' and ``high hubness score,'' a threshold value of two standard deviations above the mean was calculated. A global threshold value, meaning that $N_k$ and $q_{16}$ were calculated for all the points regardless of class membership and then averages and standard deviations were calculated, can be seen in Fig.\ref{fig:GlobDensHubs}. 
+For the experiments, the hubness scores $N_k$ were calculated for all the points with $k=5,10,$ and $50$. As far as the density estimation, $q_k(x) = \frac{1}{||x-x_k||}$, where $x$ is a data point and $x_k$ is the $k$th nearest neighbor of $x$, was chosen for its efficiency and since more sophisticated non-parametric consistent density estimators also suffer from the curse of dimensionality. All the density estimation plots used $q_{16}$. To determine what is ``high density'' and ``high hubness score,'' a threshold value of two standard deviations above the mean was calculated. Taking into account the different types of data, densities, dimensions and $k$'s, there were 72 total plots, and Fig.\ref{fig:GlobDensHubs} shows representative plots of all the experiments conducted. In these figures, global thresholds for density and hubness scores were plotted in black. Global thresholds refer to the fact that $N_k$ and $q_{16}$ were calculated for all the points regardless of class membership and then averages and standard deviations were calculated. The blue and red represent the class membership of each point, which is known from how the data was created. 
+
+The most obvious aspects of the data plotted in Fig. \ref{fig:GlobDensHubs} is the strong positive correlation and the ``wings'' formed by the two clusters. The positive correlation between these two measures seem to be close to quadratic. Also, the experiments show that the bigger the difference in densities between the two clusters, the more of a gap there is, and hence forming the ``wings.'' Due to the curse of dimensionality, these wings are more common in the 30 and 60 dimensional data than they are in the 100 dimensional data.
+
+The next observation has to do with the four quadrants of Fig. \ref{fig:DensHubInt}, which can be seen in each plot of Fig. \ref{fig:GlobDensHubs}. In all 72 experiments, more than 90\% of the data lies in the third quadrant (non-hub and low density), which is due to how we defined the thresholds. The interesting observations come from the proportions of data in the other quadrants. In 23 out of the 36 Gaussian experiments, i.e. 63.89\% of the experiments, a larger proportion of hubs in the high density region. This suggests that for the Gaussian distributions, hubs are more likely to be in a high density region. For the Uniform data, 30 out of 36 experiments, or about 83\% of the experiments, had a larger proportion of hubs in the low density region, which means that hubs are most likely in low density regions. This would suggest that hubness scores and density are not exactly the same measure.
 
 \begin{figure}
 \centering
@@ -112,7 +117,22 @@ For the experiments, the hubness scores $N_k$ were calculated for all the points
         \includegraphics[width=2.5in,height=2in]{../fig/unif-dim60-1to2-k10-GlobDensGlobHubs.png}\\
         {\scriptsize (c)} &  {\scriptsize (d)} 
       \end{tabular}
-      \caption{Density, $q_{16}$, plotted against hubness score, $N_{10}$, for data sets (a) $G_{60,3000}$, (b) $G_{60,5000}$, (c) $U_{60,3000}$, and (d) $U_{60,5000}$.}\label{fig:GlobDensHubs}
+      \caption{Density, $q_{16}$, plotted against hubness score, $N_{10}$, for data sets (a) $G_{60,3000}$, (b) $G_{60,5000}$, (c) $U_{60,3000}$, and (d) $U_{60,5000}$. The true class is depicted in the two colors of the points and the global thresholds are plotted in black.}\label{fig:GlobDensHubs}
+\end{figure}
+
+The problem with just looking at a global threshold is that it does not account for the difference in densities between the two clusters. Hence, the same experiments were performed but this time with local thresholds, meaning that the same $N_k$ and $q_{16}$ were used, but this time the mean and standard deviation were calculated for each class. The thresholds for the light blue cluster were plotted in dark blue and the ones for the pink one were plotted in red. Some of the resulting plots can be seen in Fig \ref{fig:LocDensHubs}. For these experiments, the Gaussian experiments had similar results as the global ones. About 64\% of the Gaussian experiments had most of its hubs in the high density region. However, while the Uniform experiments with ``global hubs,'' i.e. the global threshold, were mainly in the global non-dense regions, for about 85\% of the ``local'' experiments had most of the local hubs in the local ?dense? region. This again supports that hubness scores and density are closely related. 
+
+\begin{figure}
+\centering
+    \begin{tabular}{cccc}
+        \includegraphics[width=2.5in,height=2in]{../fig/gauss-dim60-1to2-k10-LocDensLocHubs.png} &
+        \includegraphics[width=2.5in,height=2in]{../fig/gauss-dim60-1to4-k10-LocDensLocHubs.png} \\
+        {\scriptsize (a)} &  {\scriptsize (b)} \\
+        \includegraphics[width=2.5in,height=2in]{../fig/unif-dim60-1to2-k10-LocDensLocHubs.png}&
+        \includegraphics[width=2.5in,height=2in]{../fig/unif-dim60-1to2-k10-LocDensLocHubs.png}\\
+        {\scriptsize (c)} &  {\scriptsize (d)} 
+      \end{tabular}
+      \caption{Density, $q_{16}$, plotted against hubness score, $N_{10}$, for data sets (a) $G_{60,3000}$, (b) $G_{60,5000}$, (c) $U_{60,3000}$, and (d) $U_{60,5000}$. The true class is depicted in the two colors: pink and blue. Class thresholds are plotted in red (for the pink class) and blue (for the blue class).}\label{fig:LocDensHubs}
 \end{figure}
 
 [Distance plots, Correlation of hubs to density, etc.]
