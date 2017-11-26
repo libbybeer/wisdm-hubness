@@ -2,18 +2,19 @@
 # Code written for WiSDM at ICERM, July 2017
 # Originally run on the Oscar cluster at Brown University
 
-setwd('/users/guest427/wisdm-hubness/users/jesse/')
+setwd('/home/jesse/hubness/wisdm-hubness/users/jesse/')
 source('hubness.R')
+require('grid')
 
 # This is where my data lives
-dir='/users/guest427/wisdm-hubness/shared_data/'
+dir='/home/jesse/hubness/wisdm-hubness/shared_data/'
 filelist = list.files(dir)[-1] # skip the first file, which is a .py script
 
-gaussfiles = filelist[grepl('gauss', filelist)]
+gaussfiles = filelist[grepl('gaussians', filelist)]
 uniformfiles = filelist[grepl('unif', filelist)]
 
 # For each file, generate the ranked distance matrix and save it.
-outputdir = '/users/guest427/wisdm-hubness/users//jesse/rankeddistances/'
+outputdir = '/home/jesse/hubness/wisdm-hubness/users/jesse/rankeddistances/'
 for (filename in gaussfiles) {
   matdata = readMat(paste0(dir,filename), sparseMatrixClass='matrix')
   # put together the cluster labels for ground truth
@@ -85,33 +86,35 @@ for (filename in gaussfiles){
   intramean = mean(c(mydist[highhubidx0, highhubidx0], mydist[highhubidx1, highhubidx1]))
   intermean = mean(c(mydist[highhubidx0, highhubidx1], mydist[highhubidx1, highhubidx0]))
   
-  outfile =paste0("/users/guest427/wisdm-hubness//users/jesse//graphs/", 
+  outfile =paste0("/home/jesse/hubness/wisdm-hubness/users/jesse/graphs/", 
              filename, '.',k,'.png')
   png(outfile)
-  par(mfrow=c(2, 2))
+  par(mfrow=c(2, 2),  mar=c(5.1, 4.1, 4.1, 2.1),
+      oma = c(0,0,3,0))
   hist(mydist ,col='blue', breaks=100, freq=FALSE,
-       main="Distances between (all) points", xlab="Distance between points",
+       main="(a) Distances between (all) points", xlab="Distance between points",
        xlim=c(0, max(mydist))) 
-  abline(v=intermean+2, col='red', lwd=2)
-  abline(v=intramean+2, col='red', lwd=2)
-  mtext(outfile, side=3, line=3)
+  abline(v=intermean+2, col='orange', lwd=2)
+  abline(v=intramean+2, col='orange', lwd=2)
+  mtext(paste0(k,"-Hubness on ", filename), 
+        side=3, line=1, cex=1.5, adj=.5, outer = TRUE)
   hist(c(mydist[highhubidx0, highhubidx0],mydist[highhubidx1, highhubidx1]),
-    main="IntrA-cluster distances", freq=FALSE,
+    main="(c) IntrA-cluster distances", freq=FALSE,
     xlab="Distance between same-cluster hubs",
     xlim=c(0, max(mydist)), col='blue', breaks=100)
-  abline(v=intermean, col='red', lwd=2)
-  abline(v=intramean, col='red', lwd=2)
+  abline(v=intermean, col='orange', lwd=2)
+  abline(v=intramean, col='orange', lwd=2)
   hist(mydist[highhubidx, highhubidx] ,col='blue', breaks=100, freq=FALSE,
-       main="Distances between hubs", xlab="Distance between hubs",
+       main="(b) Distances between hubs", xlab="Distance between hubs",
        xlim=c(0,max(mydist)))
-  abline(v=intermean, col='red', lwd=2)
-  abline(v=intramean, col='red', lwd=2)
+  abline(v=intermean, col='orange', lwd=2)
+  abline(v=intramean, col='orange', lwd=2)
   hist(c(mydist[highhubidx0, highhubidx1],mydist[highhubidx1, highhubidx0]),
-       main="IntER-cluster distances", freq=FALSE,
+       main="(d) IntER-cluster distances", freq=FALSE,
        xlab="Distance between diff-cluster hubs",
        xlim=c(0, max(mydist)), col='blue', breaks=100)
-  abline(v=intermean, col='red', lwd=2)
-  abline(v=intramean, col='red', lwd=2)
+  abline(v=intermean, col='orange', lwd=2)
+  abline(v=intramean, col='orange', lwd=2)
 
   dev.off()
 }
