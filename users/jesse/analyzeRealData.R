@@ -2,15 +2,15 @@
 # Code written for WiSDM at ICERM, July 2017
 # Originally run on the Oscar cluster at Brown University
 
-setwd('/users/guest427/wisdm-hubness/users/jesse/')
+setwd('/home/jesse/hubness/wisdm-hubness/users/jesse/')
 source('hubness.R')
 
 # This is where my data lives
-dir='/users/guest427/wisdm-hubness/priya_data/'
+dir='/home/jesse/hubness/wisdm-hubness/priya_data/'
 filelist = list.files(dir)
 realfiles = filelist[grepl('^data_', filelist)][-1] # leave out newsgroups, big.
 # For each file, generate the ranked distance matrix and save it.
-outputdir = '/users/guest427/wisdm-hubness/users//jesse/rankeddistances/'
+outputdir='/home/jesse/hubness/wisdm-hubness/users/jesse/rankeddistances/'
 for (filename in realfiles) {
   matdata = readMat(paste0(dir,filename), sparseMatrixClass='matrix')
   # put together the cluster labels for ground truth
@@ -74,14 +74,14 @@ for (filename in realfiles){
   intramean = mean(intradist)
   intermean = mean(interdist)
   
-  outfile =paste0("/users/guest427/wisdm-hubness//users/jesse//graphs/", 
+  outfile =paste0("/home/jesse/hubness/wisdm-hubness/users/jesse/graphs/", 
              filename, '.',k,'.png')
   png(outfile)
-  par(mfrow=c(2, 2))
+  par(mfrow=c(2, 2), oma=c(0,0,3,0))
   hist(mydist ,col='blue', breaks=100, freq=FALSE,
        main="Distances between (all) points", xlab="Distance between points",
        xlim=c(0, max(mydist))) 
-  mtext(outfile, side=3, line=3)  
+  mtext(paste0(k,"-Hubness on ", filename), side=3, line=1, outer=TRUE, cex=1.5, adj=.5)
   hist(intradist,
     main="IntrA-cluster distances", freq=FALSE,
     xlab="Distance between same-cluster hubs",
