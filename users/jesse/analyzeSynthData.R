@@ -4,7 +4,6 @@
 
 setwd('/home/jesse/hubness/wisdm-hubness/users/jesse/')
 source('hubness.R')
-require('grid')
 
 # This is where my data lives
 dir='/home/jesse/hubness/wisdm-hubness/shared_data/'
@@ -157,25 +156,25 @@ for (filename in uniformfiles){
     png(outfile)
     par(mfrow=c(2, 2), oma = c(0,0,3,0))
     hist(mydist ,col='blue', breaks=100, freq=FALSE,
-         main="Distances between (all) points", xlab="Distance between points",
+         main="(a) Distances between (all) points", xlab="Distance between points",
          xlim=c(0, max(mydist))) 
     abline(v=intermean+.5, col='orange', lwd=2)
     abline(v=intramean+.5, col='orange', lwd=2)
     mtext(paste0(k,"-Hubness on ", filename), 
           side=3, line=1, cex=1.5, adj=.5, outer = TRUE)
     hist(c(mydist[highhubidx0, highhubidx0],mydist[highhubidx1, highhubidx1]),
-         main="IntrA-cluster distances", freq=FALSE,
+         main="(c) IntrA-cluster distances", freq=FALSE,
          xlab="Distance between same-cluster hubs",
          xlim=c(0, max(mydist)), col='blue', breaks=100)
     abline(v=intermean, col='orange', lwd=2)
     abline(v=intramean, col='orange', lwd=2)
     hist(mydist[highhubidx, highhubidx] ,col='blue', breaks=100, freq=FALSE,
-         main="Distances between hubs", xlab="Distance between hubs",
+         main="(b) Distances between hubs", xlab="Distance between hubs",
          xlim=c(0,max(mydist)))
     abline(v=intermean, col='orange', lwd=2)
     abline(v=intramean, col='orange', lwd=2)
     hist(c(mydist[highhubidx0, highhubidx1],mydist[highhubidx1, highhubidx0]),
-         main="IntER-cluster distances", freq=FALSE,
+         main="(d) IntER-cluster distances", freq=FALSE,
          xlab="Distance between diff-cluster hubs",
          xlim=c(0, max(mydist)), col='blue', breaks=100)
     abline(v=intermean, col='orange', lwd=2)
