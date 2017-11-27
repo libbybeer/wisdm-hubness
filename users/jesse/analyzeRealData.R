@@ -79,18 +79,18 @@ for (filename in realfiles){
   png(outfile)
   par(mfrow=c(2, 2), oma=c(0,0,3,0))
   hist(mydist ,col='blue', breaks=100, freq=FALSE,
-       main="Distances between (all) points", xlab="Distance between points",
+       main="(a) Distances between (all) points", xlab="Distance between points",
        xlim=c(0, max(mydist))) 
   mtext(paste0(k,"-Hubness on ", filename), side=3, line=1, outer=TRUE, cex=1.5, adj=.5)
   hist(intradist,
-    main="IntrA-cluster distances", freq=FALSE,
+    main="(c) IntrA-cluster distances", freq=FALSE,
     xlab="Distance between same-cluster hubs",
     xlim=c(0, max(mydist)), col='blue', breaks=60)
   hist(mydist[highhubidx, highhubidx] ,col='blue', breaks=100, freq=FALSE,
-       main="Distances between hubs", xlab="Distance between hubs",
+       main="(b) Distances between hubs", xlab="Distance between hubs",
        xlim=c(0,max(mydist)))
   hist(interdist,
-       main="IntER-cluster distances", freq=FALSE,
+       main="(d) IntER-cluster distances", freq=FALSE,
        xlab="Distance between diff-cluster hubs",
        xlim=c(0, max(mydist)), col='blue', breaks=100)
   dev.off()
