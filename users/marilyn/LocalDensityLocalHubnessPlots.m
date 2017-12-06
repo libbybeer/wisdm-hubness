@@ -34,7 +34,8 @@ for i=1:ld
     for j=1:lr
         for k=1:lk
             load(['gauss-hubness' num2str(dim(i)) '-1000-' num2str(dr(j)) '000-k' num2str(knn(k)) '.mat'])
-            load(['gauss-density-dim' num2str(dim(i)) '-1000-' num2str(dr(j)) '000.mat'])
+%             load(['gauss-density-dim' num2str(dim(i)) '-1000-' num2str(dr(j)) '000.mat'])
+            load(['gauss-KDE-dim' num2str(dim(i)) '-1000-' num2str(dr(j)) '000.mat'])
             figure(count);
             hold on
 %             thr = mean(N_k)+2*std(N_k);
@@ -66,7 +67,8 @@ for i=1:ld
     for j=1:lr
         for k=1:lk
             load(['unif-hubness' num2str(dim(i)) '-1000-' num2str(dr(j)) '000-k' num2str(knn(k)) '.mat'])
-            load(['unif-density-dim' num2str(dim(i)) '-1000-' num2str(dr(j)) '000.mat'])
+%             load(['unif-density-dim' num2str(dim(i)) '-1000-' num2str(dr(j)) '000.mat'])
+            load(['unif-KDE-dim' num2str(dim(i)) '-1000-' num2str(dr(j)) '000.mat'])
             figure(count);
             hold on
 %             thr = mean(N_k)+2*std(N_k);
