@@ -24,6 +24,7 @@
                              % when including figure files
 \usepackage{multicol}        % used for the two-column index
 \usepackage[bottom]{footmisc}% places footnotes at page bottom
+\usepackage{amsmath,amsfonts}
 
 % see the list of further useful packages
 % in the Reference Guide
@@ -88,7 +89,8 @@ Please use the 'starred' version of the new Springer \texttt{abstract} command f
 \section{Hubs, Density, and Clustering}
 \label{sec:4}
 
-To investigate the relationship between density, hubness scores, and clustering, data sets of 30, 60, and 100 relevant dimensions were created. For each of these dimensions, two types of data sets were generated: (1) two Gaussian spheres separated by 10 units in the first coordinate and (2) two uniform cubes separated by one unit along its first dimension. In order to emulate varying densities, one cluster was designed to contain 1000 points and the second varied in size (2000, 3000, 4000, and 5000). There was a resulting total of 24 data sets given the different dimensions, distribution of points, and varying densities. For the rest of the chapter, the Gaussian data sets will be denoted as $G_{d,N}$ and the uniform ones as $U_{d,N}$, where $d$ is the dimension and $N$ is the number of points. In general, any $d$-dimensional data of $N$ points will be denoted as $X_{d,N}$.
+To investigate the relationship between density, hubness scores, and clustering, data sets of 30, 60, and 100 relevant dimensions were created. For each of these dimensions, two types of data sets were generated: (1) two Gaussian spheres separated by 10 units in the first coordinate and (2) two uniform cubes separated by one unit along its first dimension. In order to emulate varying densities, one cluster was designed to contain 1000 points and the second varied in size (2000, 3000, 4000, and 5000). There was a resulting total of 24 data sets given the different dimensions, distribution of points, and varying densities. An additional non-convex data cloud in 60 dimensions composed of two close by clusters with similar density was created to measure clustering potential. For the rest of the chapter, the Gaussian data sets will be denoted as $G_{d,N}$, the uniform ones as $U_{d,N}$, where $d$ is the dimension and $N$ is the number of points, and the non-convex data cloud as $S_{60,6000}$. In general, any $d$-dimensional data of $N$ points will be denoted as $X_{d,N}$.
+
 
 \subsection{Hubness and Data Density}
 \label{density}
@@ -141,13 +143,17 @@ Another interesting observation from all the experiments, both the local and glo
 
 [Distance plots, Correlation of hubs to density, etc.]
 
-\subsection{Hubness and Clusters}
-\label{sec:4.2}
-        
-[How do hubs relate to special points from various clustering methods (DBSCAN core points, outliers, etc.)?]
+\subsection{Hubness and Purity}
+\label{purityHubness}
 
-\subsection{Other Experiments PlaceHolder}
-[These experiments could go into previous subsections as deemed fit:Landscape of hubs for different structured data, purity of reverse neighbors]
+Hubs have the potential to be used in a clustering method. For example, it is possible to only cluster hubs and then assign their corresponding reverse k-nearest neighbors(RkNN), or those points that have hubs as their k-nearest neighbors, the same labeling as the hubs. Hence, we explored the relationship between hubness score and purity, which is defined as:
+\[\mbox{purity } = \frac{1}{N} \sum_i \max_j |\hat{C}_i \cap C_j|\]
+
+where $\mathcal{C} = \{\hat{C}_1,\cdots,\hat{C}_p\}$ is the set of calculated clusters and $\mathbb{C} = \{C_1,\cdots C_q\}$ is the set of true classes in the data.
+
+To explore that relationship, all the points in the data set such that $N_k > \lambda$ were chosen and their corresponding true labels, which are treated as $\mathcal{C}$ to avoid calculation errors in this exploratory step, were recorded. For each point that passed the hubness score threshold, their RkNN were assigned the same cluster label. Once that is done for all points that passed the threshold, purity was calculated.
+
+The plots for these experiments show the purity levels given threshold values of $N_k$ and the black vertical line show 2 standard deviations away from the mean of $N_k$. We expected a monotonic increasing function, meaning that the larger the hubness score, the better purity we expected.
 
 \section{Discussion}
 \label{sec:5}

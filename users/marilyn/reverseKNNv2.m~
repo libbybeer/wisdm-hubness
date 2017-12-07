@@ -22,6 +22,5 @@ function [inds,isRkNN] = reverseKNNv2(Qinds,Rpts,k)
 isRkNN = zeros(size(Rpts,1),1);
 [~,inds] = pdist2(Rpts,Rpts,'euclidean','Smallest',k+1);
 inds = inds(2:end,:)';
-di= unique(inds.*Qinds;
-isRkNN(di)=1;
-isRkNN = logical(isRkNN);
+
+isRkNN= mask & Qinds;
