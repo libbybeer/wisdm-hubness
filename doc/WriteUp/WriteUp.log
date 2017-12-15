@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  6 DEC 2017 21:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 DEC 2017 19:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -462,18 +462,14 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
 
 
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Reference `fig:DensHubInt' on page 2 undefined on input line 98.
-
-
-<../fig/DensHub-Intuition.png, id=10, 704.6325pt x 566.61688pt>
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<../fig/DensHub-Intuition.png, id=15, 704.6325pt x 566.61688pt>
 File: ../fig/DensHub-Intuition.png Graphic file (type png)
 
 <use ../fig/DensHub-Intuition.png>
 Package pdftex.def Info: ../fig/DensHub-Intuition.png used on input line 102.
 (pdftex.def)             Requested size: 144.5366pt x 144.53294pt.
- [2]
+
 
 LaTeX Warning: Reference `GlobDensHubs' on page 3 undefined on input line 108.
 
@@ -516,11 +512,6 @@ Overfull \hbox (34.43657pt too wide) in paragraph at lines 112--120
 LaTeX Warning: Reference `GlobDensHubs' on page 3 undefined on input line 123.
 
 [3 <../fig/DensHub-Intuition.png>]
-
-LaTeX Warning: Reference `fig:LocDensHubs' on page 4 undefined on input line 12
-5.
-
-
 <../fig/gauss-dim60-1to2-k10-LocKDELocHubs.png, id=25, 1547.7825pt x 1274.7625p
 t>
 File: ../fig/gauss-dim60-1to2-k10-LocKDELocHubs.png Graphic file (type png)
@@ -559,22 +550,57 @@ Overfull \hbox (34.4488pt too wide) in paragraph at lines 129--137
 im60-1to4-k10-GlobKDEGlobHubs.png (PNG copy)> <../fig/unif-dim60-1to2-k10-GlobK
 DEGlobHubs.png (PNG copy)>] [5 <../fig/gauss-dim60-1to2-k10-LocKDELocHubs.png (
 PNG copy)> <../fig/gauss-dim60-1to4-k10-LocKDELocHubs.png (PNG copy)> <../fig/u
-nif-dim60-1to2-k10-LocKDELocHubs.png (PNG copy)>] [6] (./WriteUp.aux)
+nif-dim60-1to2-k10-LocKDELocHubs.png (PNG copy)>]
+<../fig/SQdata.png, id=34, 1504.62125pt x 1054.94125pt>
+File: ../fig/SQdata.png Graphic file (type png)
+
+<use ../fig/SQdata.png>
+Package pdftex.def Info: ../fig/SQdata.png used on input line 164.
+(pdftex.def)             Requested size: 180.66154pt x 144.53574pt.
+
+<../fig/SQmoons-dim60-6000-k5-PurityHubness.png, id=35, 1610.015pt x 1064.97874
+pt>
+File: ../fig/SQmoons-dim60-6000-k5-PurityHubness.png Graphic file (type png)
+ <use ../fig/SQmoons-dim60-6000-k5-PurityHubness.png>
+Package pdftex.def Info: ../fig/SQmoons-dim60-6000-k5-PurityHubness.png used on
+ input line 165.
+(pdftex.def)             Requested size: 180.66438pt x 144.52968pt.
+
+<../fig/SQmoons-dim60-6000-k10-PurityHubness.png, id=36, 1450.41875pt x 1069.99
+75pt>
+File: ../fig/SQmoons-dim60-6000-k10-PurityHubness.png Graphic file (type png)
+ <use ../fig/SQmoons-dim60-6000-k10-PurityHubness.png>
+Package pdftex.def Info: ../fig/SQmoons-dim60-6000-k10-PurityHubness.png used o
+n input line 167.
+(pdftex.def)             Requested size: 180.66008pt x 144.54138pt.
+
+<../fig/SQmoons-dim60-6000-k50-PurityHubness.png, id=37, 1693.32625pt x 1080.03
+5pt>
+File: ../fig/SQmoons-dim60-6000-k50-PurityHubness.png Graphic file (type png)
+ <use ../fig/SQmoons-dim60-6000-k50-PurityHubness.png>
+Package pdftex.def Info: ../fig/SQmoons-dim60-6000-k50-PurityHubness.png used o
+n input line 168.
+(pdftex.def)             Requested size: 180.6596pt x 144.52946pt.
+
+Overfull \hbox (34.4287pt too wide) in paragraph at lines 163--171
+ [][] 
+ []
+
+[6] [7 <../fig/SQdata.png> <../fig/SQmoons-dim60-6000-k5-PurityHubness.png> <..
+/fig/SQmoons-dim60-6000-k10-PurityHubness.png> <../fig/SQmoons-dim60-6000-k50-P
+urityHubness.png>] (./WriteUp.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 3256 strings out of 493089
- 44731 string characters out of 6134842
- 116373 words of memory out of 5000000
- 6639 multiletter control sequences out of 15000+600000
+ 3277 strings out of 493089
+ 45576 string characters out of 6134842
+ 117493 words of memory out of 5000000
+ 6656 multiletter control sequences out of 15000+600000
  48438 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,12n,24p,1138b,326s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,12n,24p,1336b,326s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texl
@@ -587,10 +613,10 @@ s/type1/urw/symbol/usyr.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw
 /times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utm
 bi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
 /usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on WriteUp.pdf (6 pages, 721155 bytes).
+Output written on WriteUp.pdf (7 pages, 1115680 bytes).
 PDF statistics:
- 81 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 94 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

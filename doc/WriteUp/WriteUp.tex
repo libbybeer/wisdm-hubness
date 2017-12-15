@@ -153,7 +153,20 @@ where $\mathcal{C} = \{\hat{C}_1,\cdots,\hat{C}_p\}$ is the set of calculated cl
 
 To explore that relationship, all the points in the data set such that $N_k > \lambda$ were chosen and their corresponding true labels, which are treated as $\mathcal{C}$ to avoid calculation errors in this exploratory step, were recorded. For each point that passed the hubness score threshold, their RkNN were assigned the same cluster label. Once that is done for all points that passed the threshold, purity was calculated.
 
-The plots for these experiments show the purity levels given threshold values of $N_k$ and the black vertical line show 2 standard deviations away from the mean of $N_k$. We expected a monotonic increasing function, meaning that the larger the hubness score, the better purity we expected.
+The plots for these experiments show the purity levels given threshold values of $N_k$ and the black vertical line show 2 standard deviations away from the mean of $N_k$. We expected a monotonic increasing function, meaning that the larger the hubness score the better purity we expected, and higher purity results for the convex clusters. For the Gaussian and Uniform data sets, purity was 1 for all the experiments. This is not very surprising since in the convex and well separated cases, the k-nearest neighbors are going to be other points in the same cluster. Therefore, if you know the true labels for those points, then the clustering will lead to high accuracy, or in this case high purity. There was a more interesting behavior for the non-convex data, shown in Figure \ref{fig:purity}(a). While in all these experiments, purity eventually does achieve a value of 1, it happens at 10,12, and 11 standard deviations above the mean for $N_{5}, N_{10},$ and $N_{50}$, respectively. These are much higher values than the current hub cut off, which is 2 standard deviations from the mean. Most importantly, purity values reach 1 when all the points from one cluster are gone. Therefore, the important region is the one before this leveling off, which has purity peaks of 0.8888, 0.88, 0.85, respectively.
+
+\begin{figure}
+\centering
+    \begin{tabular}{cccc}
+        \includegraphics[width=2.5in,height=2in]{../fig/SQdata.png} &
+        \includegraphics[width=2.5in,height=2in]{../fig/SQmoons-dim60-6000-k5-PurityHubness.png} \\
+        {\scriptsize (a)} &  {\scriptsize (b)} \\
+        \includegraphics[width=2.5in,height=2in]{../fig/SQmoons-dim60-6000-k10-PurityHubness.png}&
+        \includegraphics[width=2.5in,height=2in]{../fig/SQmoons-dim60-6000-k50-PurityHubness.png}\\
+        {\scriptsize (c)} &  {\scriptsize (d)} 
+      \end{tabular}
+      \caption{(a) The first 2 coordinates of the non-convex data set. The hubness score with $k$ = (a)5, (b)10, (c)50 plotted against purity. The black vertical line shows 2 standard deviations above the mean of the hubness score so that all the values to the right will be considered hubs. }\label{fig:purity}
+\end{figure}
 
 \section{Discussion}
 \label{sec:5}
