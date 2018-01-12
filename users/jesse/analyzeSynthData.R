@@ -87,31 +87,35 @@ for (filename in gaussfiles){
   
   outfile =paste0("/home/jesse/hubness/wisdm-hubness/users/jesse/graphs/", 
              filename, '.',k,'.png')
-  png(outfile)
-  par(mfrow=c(2, 2),  mar=c(5.1, 4.1, 4.1, 2.1),
+  png(outfile, width=8, height=8, units="in", res=300)
+  par(mfrow=c(2, 2),  mar=c(5.1, 5.1, 4.1, 2.1),
       oma = c(0,0,3,0))
-  hist(mydist ,col='blue', breaks=100, freq=FALSE,
+  xlimits = c(min(mydist[mydist!=0]), max(mydist))
+  hist(mydist[mydist!=0] ,col='blue', breaks=100, freq=FALSE,
        main="(a) Distances between (all) points", xlab="Distance between points",
-       xlim=c(0, max(mydist))) 
+       xlim=xlimits) 
   abline(v=intermean+2, col='orange', lwd=2)
   abline(v=intramean+2, col='orange', lwd=2)
   mtext(paste0(k,"-Hubness on ", filename), 
         side=3, line=1, cex=1.5, adj=.5, outer = TRUE)
-  hist(c(mydist[highhubidx0, highhubidx0],mydist[highhubidx1, highhubidx1]),
+  hubdist=c(mydist[highhubidx0, highhubidx0],mydist[highhubidx1, highhubidx1])
+  hist(hubdist[hubdist!=0],
     main="(c) IntrA-cluster distances", freq=FALSE,
     xlab="Distance between same-cluster hubs",
-    xlim=c(0, max(mydist)), col='blue', breaks=100)
+    xlim=xlimits, col='blue', breaks=100)
   abline(v=intermean, col='orange', lwd=2)
   abline(v=intramean, col='orange', lwd=2)
-  hist(mydist[highhubidx, highhubidx] ,col='blue', breaks=100, freq=FALSE,
+  hubdist=mydist[highhubidx, highhubidx]
+  hist(hubdist[hubdist!=0] ,col='blue', breaks=100, freq=FALSE,
        main="(b) Distances between hubs", xlab="Distance between hubs",
-       xlim=c(0,max(mydist)))
+       xlim=xlimits)
   abline(v=intermean, col='orange', lwd=2)
   abline(v=intramean, col='orange', lwd=2)
-  hist(c(mydist[highhubidx0, highhubidx1],mydist[highhubidx1, highhubidx0]),
+  hubdist=c(mydist[highhubidx0, highhubidx1],mydist[highhubidx1, highhubidx0])
+  hist(hubdist[hubdist!=0],
        main="(d) IntER-cluster distances", freq=FALSE,
        xlab="Distance between diff-cluster hubs",
-       xlim=c(0, max(mydist)), col='blue', breaks=100)
+       xlim=xlimits, col='blue', breaks=100)
   abline(v=intermean, col='orange', lwd=2)
   abline(v=intramean, col='orange', lwd=2)
 
@@ -155,28 +159,32 @@ for (filename in uniformfiles){
                     filename, '.',k,'.png')
     png(outfile)
     par(mfrow=c(2, 2), oma = c(0,0,3,0))
-    hist(mydist ,col='blue', breaks=100, freq=FALSE,
+    xlimits=c(min(mydist),max(mydist))
+    hist(mydist[mydist!=0] ,col='blue', breaks=100, freq=FALSE,
          main="(a) Distances between (all) points", xlab="Distance between points",
-         xlim=c(0, max(mydist))) 
+         xlim=xlimits) 
     abline(v=intermean+.5, col='orange', lwd=2)
     abline(v=intramean+.5, col='orange', lwd=2)
     mtext(paste0(k,"-Hubness on ", filename), 
           side=3, line=1, cex=1.5, adj=.5, outer = TRUE)
-    hist(c(mydist[highhubidx0, highhubidx0],mydist[highhubidx1, highhubidx1]),
+    hubdist=c(mydist[highhubidx0, highhubidx0],mydist[highhubidx1, highhubidx1])
+    hist(hubdist[hubdist!=0],
          main="(c) IntrA-cluster distances", freq=FALSE,
          xlab="Distance between same-cluster hubs",
-         xlim=c(0, max(mydist)), col='blue', breaks=100)
+         xlim=xlimits, col='blue', breaks=100)
     abline(v=intermean, col='orange', lwd=2)
     abline(v=intramean, col='orange', lwd=2)
-    hist(mydist[highhubidx, highhubidx] ,col='blue', breaks=100, freq=FALSE,
+    hubdist=mydist[highhubidx, highhubidx] 
+    hist(hubdist[hubdist!=0],col='blue', breaks=100, freq=FALSE,
          main="(b) Distances between hubs", xlab="Distance between hubs",
-         xlim=c(0,max(mydist)))
+         xlim=xlimits)
     abline(v=intermean, col='orange', lwd=2)
     abline(v=intramean, col='orange', lwd=2)
-    hist(c(mydist[highhubidx0, highhubidx1],mydist[highhubidx1, highhubidx0]),
+    hubdist=c(mydist[highhubidx0, highhubidx1],mydist[highhubidx1, highhubidx0])
+    hist(hubdist[hubdist!=0],
          main="(d) IntER-cluster distances", freq=FALSE,
          xlab="Distance between diff-cluster hubs",
-         xlim=c(0, max(mydist)), col='blue', breaks=100)
+         xlim=xlimits, col='blue', breaks=100)
     abline(v=intermean, col='orange', lwd=2)
     abline(v=intramean, col='orange', lwd=2)
     
