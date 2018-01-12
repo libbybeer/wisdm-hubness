@@ -52,9 +52,6 @@
 %
 \maketitle
 
-\abstract*{Each chapter should be preceded by an abstract (10--15 lines long) that summarizes the content. The abstract will appear \textit{online} at \url{www.SpringerLink.com} and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.
-Please use the 'starred' version of the new Springer \texttt{abstract} command for typesetting the text of the online abstracts (cf. source file of this chapter template \texttt{abstract}) and include them with the source files of your manuscript. Use the plain \texttt{abstract} command if the abstract is also to appear in the printed version of the book.}
-
 \abstract{Each chapter should be preceded by an abstract (10--15 lines long) that summarizes the content. The abstract will appear \textit{online} at \url{www.SpringerLink.com} and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs. \newline\indent
 Please use the 'starred' version of the new Springer \texttt{abstract} command for typesetting the text of the online abstracts (cf. source file of this chapter template \texttt{abstract}) and include them with the source files of your manuscript. Use the plain \texttt{abstract} command if the abstract is also to appear in the printed version of the book.}
 
@@ -103,7 +100,7 @@ The first question to be addressed is whether hubness scores and density are the
 \caption{An illustration of the four quadrants, which are formed by density and hubness scores thresholds, that will be seen in the following experiments where density will be plotted against hubness scores.}\label{fig:DensHubInt}
 \end{figure}
 
-To estimate density, we used the Kernel Density Estimator described in HERE with number of nearest neighbors being 100 and the bandwidth nearest neighbors being 16. The KDE is known to be an accurate consistent estimator. To determine what is ``high density'' a threshold value of two standard deviations above the mean was calculated. Also, the hubness scores $N_k$ were calculated for all the data sets with $k=5,10,$ and $50$. Taking into account the different types of data, densities, dimensions and $k$'s, there were 72 total plots.
+To estimate density, we used the Kernel Density Estimator described in \cite{berry2016variable} with number of nearest neighbors being 100 and the bandwidth nearest neighbors being 16. The KDE is known to be an accurate consistent estimator. To determine what is ``high density'' a threshold value of two standard deviations above the mean was calculated. Also, the hubness scores $N_k$ were calculated for all the data sets with $k=5,10,$ and $50$. Taking into account the different types of data, densities, dimensions and $k$'s, there were 72 total plots.
 
 The first set of experiments used a global threshold for the density, i.e. the mean and standard deviation were calculated for the density of all the points regardless of class membership. Some representative results are shown in Figure  \ref{GlobDensHubs}. In these figures, global thresholds for density and hubness scores were plotted in black. The blue and red represent the class membership of each point, which is known from how the data was created. 
 
@@ -146,14 +143,17 @@ Another interesting observation from all the experiments, both the local and glo
 \subsection{Hubness and Purity}
 \label{purityHubness}
 
-Hubs have the potential to be used in a clustering method. For example, it is possible to only cluster hubs and then assign their corresponding reverse k-nearest neighbors(RkNN), or those points that have hubs as their k-nearest neighbors, the same labeling as the hubs. Hence, we explored the relationship between hubness score and purity, which is defined as:
-\[\mbox{purity } = \frac{1}{N} \sum_i \max_j |\hat{C}_i \cap C_j|\]
+Hubs have the potential to be used for clustering. For example, it is possible to cluster only the hubs and then assign their corresponding reverse $k$-nearest neighbors (RkNN), or those points that have hubs as their $k$-nearest neighbors, the same labeling as the hubs. Hence, we explored the relationship between hubness score and purity, where the latter is defined as:
+
+\[
+\mbox{purity } = \frac{1}{N} \sum_i \max_j |\hat{C}_i \cap C_j|
+\]
 
 where $\mathcal{C} = \{\hat{C}_1,\cdots,\hat{C}_p\}$ is the set of calculated clusters and $\mathbb{C} = \{C_1,\cdots C_q\}$ is the set of true classes in the data.
 
-To explore that relationship, all the points in the data set such that $N_k > \lambda$ were chosen and their corresponding true labels, which are treated as $\mathcal{C}$ to avoid calculation errors in this exploratory step, were recorded. For each point that passed the hubness score threshold, their RkNN were assigned the same cluster label. Once that is done for all points that passed the threshold, purity was calculated.
+To explore the relationship, all the points in the dataset which have $N_k > \lambda_i$ were chosen and their corresponding true labels were recorded. For our experiments, $\lambda_i$ is iteratively increased by half a standard deviation of $N_k$. Also, the true labels $\mathcal{C}$ are used in order to avoid calculation errors, as this is an exploratory experiment. For each point that passed the hubness score threshold, their RkNNs were assigned the same cluster label, and their purity was calculated.
 
-The plots for these experiments show the purity levels given threshold values of $N_k$ and the black vertical line show 2 standard deviations away from the mean of $N_k$. We expected a monotonic increasing function, meaning that the larger the hubness score the better purity we expected, and higher purity results for the convex clusters. For the Gaussian and Uniform data sets, purity was 1 for all the experiments. This is not very surprising since in the convex and well separated cases, the k-nearest neighbors are going to be other points in the same cluster. Therefore, if you know the true labels for those points, then the clustering will lead to high accuracy, or in this case high purity. There was a more interesting behavior for the non-convex data, shown in Figure \ref{fig:purity}(a). While in all these experiments, purity eventually does achieve a value of 1, it happens at 10,12, and 11 standard deviations above the mean for $N_{5}, N_{10},$ and $N_{50}$, respectively. These are much higher values than the current hub cut off, which is 2 standard deviations from the mean. Most importantly, purity values reach 1 when all the points from one cluster are gone. Therefore, the important region is the one before this leveling off, which has purity peaks of 0.8888, 0.88, 0.85, respectively.
+The plots for these experiments in Figure \ref{fig:purity} show the purity levels given threshold values of $N_k$, and the black vertical line show 2 standard deviations away from the mean of $N_k$. For the Gaussian data sets, purity was 1 for 25 experiments, $1 - \mathcal{O}(10^{-4})$ for 8 experiments, and $1 - \mathcal{O}(10^{-3})$ for the remaining 3, which all corresponded to $100$ dimensions and $k=50$. For the Uniform data sets, purity was 1 for all except 2 experiments, both of which had purity values of $1 - \mathcal{O}(10^{-4})$. The results of $G_{d,N}$ and $U_{d,N}$ are not very surprising since in the convex and well separated cases, the k-nearest neighbors are going to be other points in the same cluster. Therefore, good training labels on these types of data will lead to high purity using something as simple as kNN. There was a more interesting behavior for the non-convex data, shown in Figure \ref{fig:purity}(a). While the Gaussian and Uniform plots are not all monotonic increasing, it turns out that the non-convex data set does show a monotonic increasing relation between the $N_k$ threshold and the purity level. This shows that the $\frac{1}{N}$ from the purity measure is influencing more the non-covex data set than the convex ones. As expected, the non-convex data sets showed lower purity than the convex ones, which can be seen in the plots that never reached purity level of 1. Also, the non-convex data shows the advantage of taking $k$ to be a small number since there is a better purity for $k=5$ compared to $k=50$ and even for $k=10$. It is interesting to note the steep increase that seems to be delayed as $k$ increases, which is something to be further studied. Looking at Figure \ref{fig:purity}(b)-(d), there are two flat regions that look like two steps towards the end of the domain. The first one corresponds to when all the hubs selected only come from one cluster and the flat region at the end corresponds to when only one point is higher than the threshold selected. Since the goal is to cluster, the interesting region is the one before these plateaus. In this region, purity levels higher than 85\% appear well above the threshold for hubs, which correspond to the black lines in Figure \ref{fig:purity}. This means that a better threshold value needs to be chosen than the one that currently defines the ``hubs.'' 
 
 \begin{figure}
 \centering
@@ -166,7 +166,9 @@ The plots for these experiments show the purity levels given threshold values of
         {\scriptsize (c)} &  {\scriptsize (d)} 
       \end{tabular}
       \caption{(a) The first 2 coordinates of the non-convex data set. The hubness score with $k$ = (a)5, (b)10, (c)50 plotted against purity. The black vertical line shows 2 standard deviations above the mean of the hubness score so that all the values to the right will be considered hubs. }\label{fig:purity}
-\end{figure}
+\end{figure}
+
+
 
 \section{Discussion}
 \label{sec:5}
